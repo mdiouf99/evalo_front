@@ -1,6 +1,6 @@
 export class RubriqueModel{
-  id ?:string ;
-  libelle ?:string;
-  description?:string;
-  status ?: string ;
+  id !:number ;
+  libelle !:string;
+  description !:string;
+  status !: string ;
 }

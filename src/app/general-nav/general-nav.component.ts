@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {KeycloakService} from "keycloak-angular";
 
 @Component({
   selector: 'app-general-nav',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./general-nav.component.css']
 })
 export class GeneralNavComponent {
+  constructor(private kcService:KeycloakService) {
 
+  }
+
+  logout(){
+    this.kcService.logout();
+  }
 }

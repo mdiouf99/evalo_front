@@ -5,12 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
 import {initializeKeycloak} from "../utils/app-init";
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { EvalComponent } from './eval/eval.component';
 import { AcceuilComponent } from './acceuil/acceuil.component';
-import { RubriqueComponent } from './Entity/rubrique/rubrique.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { GeneralNavComponent } from './general-nav/general-nav.component';
+import {TokenInterceptor} from "./core/core/interceptor/token.interceptor";
+import {ParametrageModule} from "./features/parametrage/parametrage.module";
+
+
+
+
 
 
 @NgModule({
@@ -18,21 +24,32 @@ import { GeneralNavComponent } from './general-nav/general-nav.component';
     AppComponent,
     EvalComponent,
     AcceuilComponent,
-    RubriqueComponent,
     SidebarComponent,
     NavbarComponent,
-    GeneralNavComponent
+    GeneralNavComponent,
+
+
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    KeycloakAngularModule
+    KeycloakAngularModule,
+    HttpClientModule,
+    ParametrageModule
+
+
   ],
   providers: [
     {provide: APP_INITIALIZER,
       useFactory: initializeKeycloak,
       deps: [KeycloakService],
-      multi: true,}
+      multi: true,},
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass : TokenInterceptor,
+      multi:true,
+    }
   ],
   bootstrap: [AppComponent]
 })
