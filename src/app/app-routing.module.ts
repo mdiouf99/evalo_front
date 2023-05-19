@@ -10,14 +10,13 @@ import {ParametrageComponent} from "./features/component/parametrage/parametrage
 import {RubriqueEditComponent} from "./features/parametrage/rubrique/rubrique-edit/rubrique-edit.component";
 
 const routes: Routes = [
-  { path: '', component: AcceuilComponent,canActivate:[AuthguardGuard]},
-
+  { path: '', component:AcceuilComponent,canActivate: [AuthguardGuard] },
   ];
 
 
 @NgModule({
-  imports: [RouterModule.forRoot( routes
-    )
+  imports: [RouterModule.forRoot( routes)
+
   ],
   exports: [RouterModule]
 })

@@ -1,0 +1,22 @@
+<div class="container align-items-center">
+  <form [formGroup]="form" (ngSubmit)="submitForm()">
+    <div class="mb-3">
+      <label for="id" class="form-label" >ID:</label>
+      <input type="text" class="form-control"  [disabled]="this.isAddMode" id="id" formControlName="id">
+    </div>
+    <div class="mb-3">
+      <label for="libelle" class="form-label">Libelle:</label>
+      <input type="text" id="libelle" class="form-control" formControlName="libelle">
+    </div>
+    <div class="mb-3">
+      <label for="status" class="form-label">Status:</label>
+      <select id="status" class="form-control" formControlName="status">
+        <option value="ACTIF">ACTIF</option>
+        <option value="INACTIF">INACTIF</option>
+      </select>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary mt-2" [disabled]="form.invalid">Submit</button>
+    </div>
+  </form>
+</div>

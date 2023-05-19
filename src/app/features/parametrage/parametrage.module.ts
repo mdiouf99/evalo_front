@@ -7,6 +7,8 @@ import {RubriqueEditComponent} from "./rubrique/rubrique-edit/rubrique-edit.comp
 import {RubriqueListComponent} from "./rubrique/rubrique-list/rubrique-list.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {ParametrageRoutingModule} from "./parametrage-routing.module";
+import {ItemEditComponent} from "./item/item-edit/item-edit.component";
+import {ItemListComponent} from "./item/item-list/item-list.component";
 
 
 
@@ -15,7 +17,10 @@ import {ParametrageRoutingModule} from "./parametrage-routing.module";
   declarations: [
     RubriqueListComponent,
     RubriqueEditComponent,
-    ParametrageComponent
+    ItemEditComponent,
+    ItemListComponent,
+    ParametrageComponent,
+
 
   ],
   imports: [

@@ -55,7 +55,7 @@ export class RubriqueEditComponent {
     this.rubriqueService.createRubrique(this.rubrique).subscribe(
       rub=>{
         console.log(rub);
-        this.router.navigate(['rubriquelist'])
+        this.router.navigate(['parametrage/rubriquelist'])
       }
     );
   }

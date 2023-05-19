@@ -15,11 +15,11 @@ const headers= new HttpHeaders()
 export class RubriqueServiceService {
 
   constructor(private keycloakService : KeycloakService, private http: HttpClient) { }
-  token : any   ;
+
   private baseURL = `http://localhost:8000/api`
 
   getRubrique(): Observable<RubriqueModel[]>{
-    console.log(this.token);
+
     return this.http.get<RubriqueModel[]>(this.baseURL+'/rubrique/all',{headers:headers})
   }
 
