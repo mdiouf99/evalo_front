@@ -9,6 +9,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {ParametrageRoutingModule} from "./parametrage-routing.module";
 import {ItemEditComponent} from "./item/item-edit/item-edit.component";
 import {ItemListComponent} from "./item/item-list/item-list.component";
+import { GrilleComponent } from './grille/grille.component';
 
 
 
@@ -20,6 +21,7 @@ import {ItemListComponent} from "./item/item-list/item-list.component";
     ItemEditComponent,
     ItemListComponent,
     ParametrageComponent,
+    GrilleComponent,
 
 
   ],

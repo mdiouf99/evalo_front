@@ -7,13 +7,14 @@ import {RubriqueEditComponent} from "./rubrique/rubrique-edit/rubrique-edit.comp
 import {RubriqueListComponent} from "./rubrique/rubrique-list/rubrique-list.component";
 import {ItemEditComponent} from "./item/item-edit/item-edit.component";
 import {ItemListComponent} from "./item/item-list/item-list.component";
+import {GrilleComponent} from "./grille/grille.component";
 
 
 const routes: Routes = [
   {path:'parametrage',
     component:ParametrageComponent,
-
     children:[
+      {path: 'grille', component: GrilleComponent,canActivate:[AuthguardGuard]},
       { path: 'rubriqueedit', component: RubriqueEditComponent,canActivate:[AuthguardGuard]},
       { path: 'rubriqueedit/:id', component: RubriqueEditComponent,canActivate:[AuthguardGuard]},
       {path:'rubriquelist',component : RubriqueListComponent,canActivate:[AuthguardGuard]},
