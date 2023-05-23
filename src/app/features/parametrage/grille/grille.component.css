@@ -1,9 +1,30 @@
-.param{
-  margin-top: 5%;
-}
+
 .grillebutton{
   width: 50%;
 }
 .accordion{
   margin-top: 5%;
+}
+.param {
+  border: 1px solid #000000;
+  border-radius: 4px;
+  height: 100px;
+  margin-top: 5%;
+  position: relative;
+}
+
+.param .title {
+  margin: -10px 0 0 10px;
+  background: #fff;
+  padding: 3px;
+  display: inline-block;
+  font-weight: bold;
+  position: absolute;
+}
+
+.param .col {
+  padding: 30px;
+}
+.item{
+  margin-left: 10px;
 }

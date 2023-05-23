@@ -1,19 +1,22 @@
 <div class="row param">
+  <div class="title">Title</div>
+
   <div class="col">
-    <button type="button" class="btn btn-primary grillebutton">Version</button>
+    <button type="button" class="btn btn-primary grillebutton" [routerLink]="['/parametrage/versionlist']">Version</button>
 
   </div>
   <div class="col">
     <button type="button" class="btn btn-primary grillebutton">Categorie</button>
   </div>
   <div class="col">
-    <button type="button" class="btn btn-primary grillebutton">Rubrique</button>
+    <button type="button" class="btn btn-primary grillebutton" [routerLink]="['/parametrage/rubriquelist']">Rubrique</button>
   </div>
   <div class="col">
-    <button type="button" class="btn btn-primary grillebutton">Item</button>
+    <button type="button" class="btn btn-primary grillebutton" [routerLink]="['/parametrage/itemlist']">Item</button>
   </div>
 </div>
 <div class="accordion" id="accordionExample">
+  <h1>Grille</h1>
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingOne">
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -22,8 +25,39 @@
     </h2>
     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
       <div class="accordion-body">
-        <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-      </div>
+
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Rubrique</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Rubrique</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Rubrique</button>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+            <ul class="list-group list-group-horizontal-xxl">
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="col">
+                    <label >item</label>
+                  </div>
+                  <div class="col">
+                    <select id="requiredSelect" class="form-select" required>
+                      <option value="">Required select</option>
+                    </select>
+                  </div>
+                </div>
+              </li>
+              <li class="list-group-item">A second item</li>
+              <li class="list-group-item">A third item</li>
+            </ul>          </div>
+          <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">...</div>
+          <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">...</div>
+        </div>
     </div>
   </div>
   <div class="accordion-item">
@@ -50,4 +84,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>

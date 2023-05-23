@@ -10,6 +10,8 @@ import {ParametrageRoutingModule} from "./parametrage-routing.module";
 import {ItemEditComponent} from "./item/item-edit/item-edit.component";
 import {ItemListComponent} from "./item/item-list/item-list.component";
 import { GrilleComponent } from './grille/grille.component';
+import { VersionEditComponent } from './version/version-edit/version-edit.component';
+import { VersionListComponent } from './version/version-list/version-list.component';
 
 
 
@@ -22,6 +24,8 @@ import { GrilleComponent } from './grille/grille.component';
     ItemListComponent,
     ParametrageComponent,
     GrilleComponent,
+    VersionEditComponent,
+    VersionListComponent,
 
 
   ],

@@ -25,6 +25,7 @@ export class ItemEditComponent {
     this.form = this.formBuilder.group({
       id: [{value: '', disabled: true}],
       libelle: ['', Validators.required],
+      description: ['', Validators.required],
       status: ['', Validators.required]
     })
     if (!this.isAddMode) {

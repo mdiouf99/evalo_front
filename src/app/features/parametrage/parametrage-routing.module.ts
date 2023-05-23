@@ -8,6 +8,10 @@ import {RubriqueListComponent} from "./rubrique/rubrique-list/rubrique-list.comp
 import {ItemEditComponent} from "./item/item-edit/item-edit.component";
 import {ItemListComponent} from "./item/item-list/item-list.component";
 import {GrilleComponent} from "./grille/grille.component";
+import {AcceuilComponent} from "../../acceuil/acceuil.component";
+import {AccueilParametrageComponent} from "../component/accueil-parametrage/accueil-parametrage.component";
+import {VersionEditComponent} from "./version/version-edit/version-edit.component";
+import {VersionListComponent} from "./version/version-list/version-list.component";
 
 
 const routes: Routes = [
@@ -15,12 +19,16 @@ const routes: Routes = [
     component:ParametrageComponent,
     children:[
       {path: 'grille', component: GrilleComponent,canActivate:[AuthguardGuard]},
+      {path: '', component: AccueilParametrageComponent,canActivate:[AuthguardGuard]},
       { path: 'rubriqueedit', component: RubriqueEditComponent,canActivate:[AuthguardGuard]},
       { path: 'rubriqueedit/:id', component: RubriqueEditComponent,canActivate:[AuthguardGuard]},
       {path:'rubriquelist',component : RubriqueListComponent,canActivate:[AuthguardGuard]},
       { path: 'itemedit', component: ItemEditComponent,canActivate:[AuthguardGuard]},
       { path: 'itemedit/:id', component: ItemEditComponent,canActivate:[AuthguardGuard]},
       {path:'itemlist',component : ItemListComponent,canActivate:[AuthguardGuard]},
+      { path: 'versionedit', component: VersionEditComponent,canActivate:[AuthguardGuard]},
+      { path: 'versionedit/:id', component: VersionEditComponent,canActivate:[AuthguardGuard]},
+      {path:'versionlist',component : VersionListComponent,canActivate:[AuthguardGuard]},
     ]
   }
 

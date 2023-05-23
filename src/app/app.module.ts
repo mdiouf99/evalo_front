@@ -13,6 +13,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { GeneralNavComponent } from './general-nav/general-nav.component';
 import {TokenInterceptor} from "./core/core/interceptor/token.interceptor";
 import {ParametrageModule} from "./features/parametrage/parametrage.module";
+import { AccueilParametrageComponent } from './features/component/accueil-parametrage/accueil-parametrage.component';
 
 
 
@@ -27,6 +28,7 @@ import {ParametrageModule} from "./features/parametrage/parametrage.module";
     SidebarComponent,
     NavbarComponent,
     GeneralNavComponent,
+    AccueilParametrageComponent,
 
 
 

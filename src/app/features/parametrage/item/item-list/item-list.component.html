@@ -1,5 +1,6 @@
 
 <div class="container">
+  <h1>Item</h1>
   <div class="row justify-content-end">
     <div class="col-2">
       <button type="button" class="btn btn-primary ajout " [routerLink]="['/parametrage/itemedit']" >Ajouter</button>
@@ -10,12 +11,14 @@
     <thead>
     <tr>
       <th scope="col">Libelle</th>
+      <th scope="col">description</th>
       <th scope="col">Status</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let item of items">
       <td>{{item.libelle}}</td>
+      <td>{{item.description}}</td>
       <td>{{item.status}}</td>
       <td><button class="btn btn-primary" [routerLink]="['/parametrage/itemedit',item.id]" >modify</button></td>
       <td><button class="btn btn-primary" (click)="deleteItem(item)">supp</button></td>

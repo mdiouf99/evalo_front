@@ -1,7 +1,6 @@
-export class Item{
+export class Version{
   id !: number;
   libelle !:string;
-  description !:string;
   status !:string;
 
 }

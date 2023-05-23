@@ -22,7 +22,7 @@ export class ItemService {
   }
 
   getOneItemById(id:number):Observable<Item>{
-    return this.http.get<RubriqueModel>(this.baseURL+'/item/'+id,{headers:headers})
+    return this.http.get<Item>(this.baseURL+'/item/'+id,{headers:headers})
   }
   createItem(item:Item):Observable<Item>{
     return this.http.post<Item>(this.baseURL+'/item/create',item,{headers:headers})
