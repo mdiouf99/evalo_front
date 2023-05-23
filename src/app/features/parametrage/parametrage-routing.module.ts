@@ -12,6 +12,8 @@ import {AcceuilComponent} from "../../acceuil/acceuil.component";
 import {AccueilParametrageComponent} from "../component/accueil-parametrage/accueil-parametrage.component";
 import {VersionEditComponent} from "./version/version-edit/version-edit.component";
 import {VersionListComponent} from "./version/version-list/version-list.component";
+import {CategorieListComponent} from "./categorie/categorie-list/categorie-list.component";
+import {CategorieEditComponent} from "./categorie/categorie-edit/categorie-edit.component";
 
 
 const routes: Routes = [
@@ -29,6 +31,9 @@ const routes: Routes = [
       { path: 'versionedit', component: VersionEditComponent,canActivate:[AuthguardGuard]},
       { path: 'versionedit/:id', component: VersionEditComponent,canActivate:[AuthguardGuard]},
       {path:'versionlist',component : VersionListComponent,canActivate:[AuthguardGuard]},
+      { path: 'categorieedit', component: CategorieEditComponent,canActivate:[AuthguardGuard]},
+      { path: 'categorieedit/:id', component: CategorieEditComponent,canActivate:[AuthguardGuard]},
+      {path:'categorielist',component : CategorieListComponent,canActivate:[AuthguardGuard]},
     ]
   }
 

@@ -12,6 +12,8 @@ import {ItemListComponent} from "./item/item-list/item-list.component";
 import { GrilleComponent } from './grille/grille.component';
 import { VersionEditComponent } from './version/version-edit/version-edit.component';
 import { VersionListComponent } from './version/version-list/version-list.component';
+import { CategorieEditComponent } from './categorie/categorie-edit/categorie-edit.component';
+import { CategorieListComponent } from './categorie/categorie-list/categorie-list.component';
 
 
 
@@ -26,6 +28,8 @@ import { VersionListComponent } from './version/version-list/version-list.compon
     GrilleComponent,
     VersionEditComponent,
     VersionListComponent,
+    CategorieEditComponent,
+    CategorieListComponent,
 
 
   ],

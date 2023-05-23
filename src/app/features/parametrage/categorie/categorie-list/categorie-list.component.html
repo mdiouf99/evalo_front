@@ -1,0 +1,29 @@
+
+<div class="container">
+  <h1>Categorie</h1>
+  <div class="row justify-content-end">
+    <div class="col-2">
+      <button type="button" class="btn btn-primary ajout " [routerLink]="['/parametrage/categorieedit']" >Ajouter</button>
+    </div>
+  </div>
+  <table class="table">
+    <caption class="visually-hidden">Boosted tables basic look</caption>
+    <thead>
+    <tr>
+      <th scope="col">Libelle</th>
+      <th scope="col">description</th>
+      <th scope="col">Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let categorie of categories">
+      <td>{{categorie.libelle}}</td>
+      <td>{{categorie.description}}</td>
+      <td>{{categorie.status}}</td>
+      <td><button class="btn btn-primary" [routerLink]="['/parametrage/categorieedit',categorie.id]" >modify</button></td>
+      <td><button class="btn btn-primary" (click)="deleteCategorie(categorie)">supp</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
