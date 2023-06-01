@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import {CategorieService} from "../../../../share/share/service/Categorie.service";
+
 import {Categorie} from "../../../../core/core/model/Categorie";
+import {CategorieService} from "../../../../share/share/service/categorie.service";
 
 @Component({
   selector: 'app-categorie-list',

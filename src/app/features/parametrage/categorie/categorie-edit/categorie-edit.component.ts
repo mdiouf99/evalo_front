@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {CategorieService} from "../../../../share/share/service/Categorie.service";
+
 import {ActivatedRoute, Router} from "@angular/router";
 import {Categorie} from "../../../../core/core/model/Categorie";
+import {CategorieService} from "../../../../share/share/service/categorie.service";
 
 @Component({
   selector: 'app-categorie-edit',

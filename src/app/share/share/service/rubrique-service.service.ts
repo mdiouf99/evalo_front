@@ -35,7 +35,9 @@ export class RubriqueServiceService {
   updateRubrique(rubrique:RubriqueModel,id:number):Observable<RubriqueModel>{
     return this.http.put<RubriqueModel>(this.baseURL+'/rubrique/update/'+id,rubrique,{headers:headers})
   }
-
+  getRubriqueByCat(id:number):Observable<RubriqueModel[]>{
+    return this.http.get<RubriqueModel[]>(this.baseURL+'/rubrique/cat/'+id,{headers:headers})
+  }
 
 
 }
