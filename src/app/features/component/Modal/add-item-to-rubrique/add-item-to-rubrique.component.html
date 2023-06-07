@@ -1,0 +1,30 @@
+<div class="modal-header">
+  <h4 class="modal-title">Hi there!</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<div class="modal-body">
+  <div class="container">
+    <table class="table">
+      <caption class="visually-hidden">Boosted tables basic look</caption>
+      <thead>
+      <tr>
+        <th scope="col">selectionner</th>
+        <th scope="col">Libelle</th>
+        <th scope="col">description</th>
+        <th scope="col">Status</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of items">
+        <td><input class="form-check-input" type="checkbox" (click)="addItemToRubrique(item,r,i)" value="" id="defaultCheck1"></td>
+        <td>{{item.libelle}}</td>
+        <td>{{item.description}}</td>
+        <td>{{item.status}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+</div>

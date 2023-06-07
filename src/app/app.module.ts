@@ -14,6 +14,8 @@ import { GeneralNavComponent } from './general-nav/general-nav.component';
 import {TokenInterceptor} from "./core/core/interceptor/token.interceptor";
 import {ParametrageModule} from "./features/parametrage/parametrage.module";
 import { AccueilParametrageComponent } from './features/component/accueil-parametrage/accueil-parametrage.component';
+import { AddItemModalComponent } from './features/component/Modal/add-item-modal/add-item-modal.component';
+import { AddItemToRubriqueComponent } from './features/component/Modal/add-item-to-rubrique/add-item-to-rubrique.component';
 
 
 
@@ -29,6 +31,8 @@ import { AccueilParametrageComponent } from './features/component/accueil-parame
     NavbarComponent,
     GeneralNavComponent,
     AccueilParametrageComponent,
+    AddItemModalComponent,
+    AddItemToRubriqueComponent,
 
 
 

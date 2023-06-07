@@ -9,14 +9,20 @@ import {ItemService} from "../../../share/share/service/item.service";
 import {GrilleService} from "../../../share/share/service/grille.service";
 import {VersionService} from "../../../share/share/service/Version.service";
 import {Version} from "../../../core/core/model/Version";
-// @ts-ignore
-import { Modal } from "boosted";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {AddItemModalComponent} from "../../component/Modal/add-item-modal/add-item-modal.component";
+import {AddItemToRubriqueComponent} from "../../component/Modal/add-item-to-rubrique/add-item-to-rubrique.component";
+
+
+
 
 @Component({
   selector: 'app-grille',
   templateUrl: './grille.component.html',
   styleUrls: ['./grille.component.css']
 })
+
+
 export class GrilleComponent implements OnInit{
 
   rubrique !: RubriqueModel ;
@@ -38,7 +44,7 @@ export class GrilleComponent implements OnInit{
   }
   rubriques !: RubriqueModel[] ;
 
-  constructor(private categorieService : CategorieService,private rubriqueService : RubriqueServiceService,private itemService : ItemService,private  grilleService: GrilleService,private versionService : VersionService) {
+  constructor(private modalService: NgbModal, private categorieService : CategorieService,private rubriqueService : RubriqueServiceService,private itemService : ItemService,private  grilleService: GrilleService,private versionService : VersionService) {
   }
   ngOnInit() {
     this.getCategorie();
@@ -62,10 +68,8 @@ export class GrilleComponent implements OnInit{
     this.itemService.getItem().subscribe((item:any)=>{
         console.log("map");
         this.items = item ;
-        console.log(Categorie);
+        console.log("item========>",this.items);
       }
-
-
     )
   }
 
@@ -92,14 +96,23 @@ addVersionToGrille(){
     this.grille.version = this.version ;
     console.log("grille=======>",this.grille)
 }
-  addItemToCat(item : Item ,i:number){
+  addItemToCat(item : Item,i:number ){
     // @ts-ignore
-    this.grille.categorie[i].items.push(Item);
+    this.grille.categorie[i].items.push(item);
+    console.log('item ajoute =====>',this.grille);
+    console.log('item==>',item);
+    console.log('categorie index==>',i);
 
   }
 
-  addItemToRubrique(){
+  addItemToRubrique(item : Item,c:number,i:number){
 
+    // @ts-ignore
+    console.log('item ajoute =====>',this.grille.categorie[0].rubriques[0]);
+    // @ts-ignore
+    this.grille.categorie[c].rubriques[i].items.push(item);
+    console.log('item==>',item);
+    console.log('categorie index==>',i);
   }
 
   saveGrille(){
@@ -123,10 +136,23 @@ addVersionToGrille(){
     })
 
   }
-modal(){
-  const myModal = new Modal('#myModal', {
-    keyboard: false
-  });
-}
+  //Open modal to add item to categorique
+  open(i:number) {
+    const modalRef = this.modalService.open(AddItemModalComponent);
+    modalRef.componentInstance.items = this.items;
+    modalRef.componentInstance.i = i;
+    modalRef.componentInstance.addItemToCat = this.addItemToCat.bind(this);
+  }
+  //Open modal to add item to rubrique
+  openrubrique(c:number,i:number) {
+    const modalRef = this.modalService.open(AddItemToRubriqueComponent);
+    modalRef.componentInstance.items = this.items;
+    modalRef.componentInstance.i = i;
+    modalRef.componentInstance.r = c;
+    console.log('id cat======>',c)
+    console.log('id rub=====>',i)
+    modalRef.componentInstance.addItemToRubrique = this.addItemToRubrique.bind(this);
+  }
+
 
 }

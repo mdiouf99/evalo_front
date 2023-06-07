@@ -30,7 +30,7 @@
       <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Add categorie</button>
     </div>
   </div>
-  <div class="accordion-item"*ngFor="let cat of grille.categorie">
+  <div class="accordion-item"*ngFor="let cat of grille.categorie,let i = index">
     <h2 class="accordion-header" id="headingOne">
       <button class="accordion-button" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#'+cat.libelle" aria-expanded="true" aria-controls="collapseOne">
         {{cat.libelle}}
@@ -39,13 +39,13 @@
     <div id="{{cat.libelle}}" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
       <div class="accordion-body" *ngIf="cat.rubriques !==[] " >
         <ul class="nav nav-tabs" id="myTab" role="tablist">
-          <li class="nav-item" role="presentation" *ngFor="let rub of cat.rubriques; let i = index">
-            <button class="nav-link " [class.active]="i === 0"  id="{{rub.id}}" (click)="setActiveTab(rub.libelle)" data-bs-toggle="tab" [attr.data-bs-target]="'#'+rub.libelle" type="button" role="tab" [attr.aria-controls]="rub.libelle + '-pane'" [attr.aria-selected]="i === 0">{{rub.libelle}}</button>
+          <li class="nav-item" role="presentation" *ngFor="let rub of cat.rubriques; let r = index">
+            <button class="nav-link " [class.active]="r === 0"  id="{{rub.id}}" (click)="setActiveTab(rub.libelle)" data-bs-toggle="tab" [attr.data-bs-target]="'#'+rub.libelle" type="button" role="tab" [attr.aria-controls]="rub.libelle + '-pane'" [attr.aria-selected]="i === 0">{{rub.libelle}}</button>
           </li>
         </ul>
         <div class="tab-content" id="myTabContent" >
             <div class="tab-pane fade " [class.show]="activeTab === rub.libelle"
-                 [class.active]="activeTab ===  rub.libelle" [class.hide]="activeTab !== rub.libelle " *ngFor="let rub of cat.rubriques; let i = index"  id="{{rub.libelle}}-pane" role="tabpanel" [attr.aria-labelledby]="rub.id" tabindex="0">
+                 [class.active]="activeTab ===  rub.libelle" [class.hide]="activeTab !== rub.libelle " *ngFor="let rub of cat.rubriques; let r = index"  id="{{rub.libelle}}-pane" role="tabpanel" [attr.aria-labelledby]="rub.id" tabindex="0">
               <ul class="list-group list-group-horizontal-xxl">
                 <li class="list-group-item" *ngFor="let item of rub.items">
                   <div class="row">
@@ -60,7 +60,7 @@
                   </div>
                 </li>
               </ul>
-              <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">ADD ITEM</button>
+              <button class="btn btn-primary" (click)="openrubrique(i,r)" >ADD ITEM</button>
             </div>
         </div>
   </div>
@@ -79,7 +79,7 @@
             </div>
           </li>
         </ul>
-        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2" >ADD ITEM</button>
+        <button class="btn btn-primary" (click)="open(i)" >ADD ITEM</button>
         </div>
 </div>
   </div>
@@ -127,40 +127,9 @@
   </div>
 </div>
 
-<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title h5" id="exampleModalLabel2">Selectionner les catégories</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"><span class="visually-hidden">Close</span></button>
-      </div>
-      <div class="modal-body">
-        <div class="container">
-          <table class="table">
-            <caption class="visually-hidden">Boosted tables basic look</caption>
-            <thead>
-            <tr>
-              <th scope="col">selectionner</th>
-              <th scope="col">Libelle</th>
-              <th scope="col">description</th>
-              <th scope="col">Status</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let items of items">
-              <td><input class="form-check-input" type="checkbox" (click)="addCatToGrille(categorie)" value="" id="defaultCheck2"></td>
-              <td>{{items.libelle}}</td>
-              <td>{{items.description}}</td>
-              <td>{{items.status}}</td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+
+
+
+
+
+
