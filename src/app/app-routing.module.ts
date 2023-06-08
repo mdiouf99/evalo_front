@@ -11,6 +11,7 @@ import {RubriqueEditComponent} from "./features/parametrage/rubrique/rubrique-ed
 
 const routes: Routes = [
   { path: '', component:AcceuilComponent,canActivate: [AuthguardGuard] },
+  { path: 'accueil', component:AcceuilComponent,canActivate: [AuthguardGuard] },
   ];
 
 

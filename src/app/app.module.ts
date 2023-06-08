@@ -16,6 +16,7 @@ import {ParametrageModule} from "./features/parametrage/parametrage.module";
 import { AccueilParametrageComponent } from './features/component/accueil-parametrage/accueil-parametrage.component';
 import { AddItemModalComponent } from './features/component/Modal/add-item-modal/add-item-modal.component';
 import { AddItemToRubriqueComponent } from './features/component/Modal/add-item-to-rubrique/add-item-to-rubrique.component';
+import { AlertComponent } from './features/component/alert/alert.component';
 
 
 
@@ -47,15 +48,19 @@ import { AddItemToRubriqueComponent } from './features/component/Modal/add-item-
 
   ],
   providers: [
-    {provide: APP_INITIALIZER,
+    {
+      provide: APP_INITIALIZER,
       useFactory: initializeKeycloak,
       deps: [KeycloakService],
-      multi: true,},
+      multi: true,
+    },
     {
-      provide:HTTP_INTERCEPTORS,
-      useClass : TokenInterceptor,
-      multi:true,
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
     }
+  ],
+  exports: [
   ],
   bootstrap: [AppComponent]
 })

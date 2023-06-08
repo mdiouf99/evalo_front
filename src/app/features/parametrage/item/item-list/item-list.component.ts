@@ -3,6 +3,7 @@ import {RubriqueServiceService} from "../../../../share/share/service/rubrique-s
 import {RubriqueModel} from "../../../../core/core/model/RubriqueModel";
 import {Item} from "../../../../core/core/model/Item";
 import {ItemService} from "../../../../share/share/service/item.service";
+import {AlertService} from "../../../../share/share/service/alert.service";
 
 @Component({
   selector: 'app-item-list',
@@ -11,7 +12,7 @@ import {ItemService} from "../../../../share/share/service/item.service";
 })
 export class ItemListComponent {
 
-  constructor(private itemService : ItemService) {
+  constructor(private itemService : ItemService,private alertService: AlertService) {
   }
   ngOnInit() {
     this.getItem();

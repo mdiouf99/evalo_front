@@ -14,12 +14,14 @@ import {VersionEditComponent} from "./version/version-edit/version-edit.componen
 import {VersionListComponent} from "./version/version-list/version-list.component";
 import {CategorieListComponent} from "./categorie/categorie-list/categorie-list.component";
 import {CategorieEditComponent} from "./categorie/categorie-edit/categorie-edit.component";
+import {PlateauComponent} from "./plateau/plateau.component";
 
 
 const routes: Routes = [
   {path:'parametrage',
     component:ParametrageComponent,
     children:[
+      {path: 'plateau', component: PlateauComponent,canActivate:[AuthguardGuard]},
       {path: 'grille', component: GrilleComponent,canActivate:[AuthguardGuard]},
       {path: '', component: AccueilParametrageComponent,canActivate:[AuthguardGuard]},
       { path: 'rubriqueedit', component: RubriqueEditComponent,canActivate:[AuthguardGuard]},

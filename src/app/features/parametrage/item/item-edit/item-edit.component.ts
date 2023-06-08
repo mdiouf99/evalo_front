@@ -5,6 +5,7 @@ import {RubriqueServiceService} from "../../../../share/share/service/rubrique-s
 import {ActivatedRoute, Router} from "@angular/router";
 import {Item} from "../../../../core/core/model/Item";
 import {ItemService} from "../../../../share/share/service/item.service";
+import {AlertService} from "../../../../share/share/service/alert.service";
 
 @Component({
   selector: 'app-item-edit',
@@ -16,8 +17,9 @@ export class ItemEditComponent {
   form!: FormGroup;
   id: number;
   isAddMode !: boolean;
+  showAlert = false ;
 
-  constructor(private formBuilder: FormBuilder, private itemService: ItemService, private router: Router, private route: ActivatedRoute) {
+  constructor(private formBuilder: FormBuilder, private itemService: ItemService, private router: Router, private route: ActivatedRoute,private alertService: AlertService) {
     this.id = this.route.snapshot.params['id'];
     this.isAddMode = !this.id;
     console.log(this.isAddMode);
@@ -58,7 +60,10 @@ export class ItemEditComponent {
     this.itemService.createItem(this.item).subscribe(
       item => {
         console.log(item);
-        this.router.navigate(['parametrage/rubriquelist'])
+        this.showSuccessAlert()
+        setTimeout(() => {
+          this.router.navigate(['parametrage/itemlist'])
+        }, 3000);
       }
     );
   }
@@ -71,4 +76,13 @@ export class ItemEditComponent {
 
 
   }
+  showSuccessAlert() {
+    this.alertService.showSuccess('Success! Operation completed.');
+  }
+
+  showErrorAlert() {
+    this.alertService.showError('Error! Operation failed.');
+  }
+
+
 }

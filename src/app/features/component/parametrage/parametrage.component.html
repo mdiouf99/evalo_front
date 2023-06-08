@@ -5,52 +5,35 @@
   </a>
   <hr>
   <ul class="nav nav-pills flex-column mb-auto">
-    <li>
-      <a href="#" class="nav-link text-white">
-        <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-        Modules
-      </a>
-    </li>
-    <li>
-      <a href="#" class="nav-link text-white">
+    <li class="nav-item">
+      <a routerLink="/parametrage/plateau" routerLinkActive="active"  class="nav-link"   >
         <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
         Plateaux
       </a>
     </li>
-    <li>
-      <a href="#" class="nav-link text-white">
-        <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-        Segments
-      </a>
-    </li>
-    <li>
-      <a href="#" class="nav-link text-white">
+    <li class="nav-item">
+      <a routerLink="#" class="nav-link" routerLinkActive="active">
         <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
           Utilisateurs
       </a>
     </li>
     <li class="nav-item">
-      <a href="/parametrage/grille" class="nav-link active" aria-current="page">
+      <a routerLink="/parametrage/grille" class="nav-link" routerLinkActive="active"  >
         <svg class="bi me-2" width="16" height="16"><use xlink:href=""></use></svg>
         Grille
       </a>
     </li>
+    <li>
+      <a href="#" class="nav-link " [class.active]="">
+        <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+        Suivi des actions
+      </a>
+    </li>
   </ul>
   <hr>
-  <div class="dropdown">
-    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-      <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-      <strong>mdo</strong>
-    </a>
-    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
-      <li><a class="dropdown-item" href="#">New project...</a></li>
-      <li><a class="dropdown-item" href="#">Settings</a></li>
-      <li><a class="dropdown-item" href="#">Profile</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="#">Sign out</a></li>
-    </ul>
-  </div>
+
 </div>
 <div class="container" style="margin-left:25%" >
+  <app-alert></app-alert>
 <router-outlet></router-outlet>
 </div>
