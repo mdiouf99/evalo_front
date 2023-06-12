@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {RubriqueModel} from "../../../../core/core/model/RubriqueModel";
 import {RubriqueServiceService} from "../../../../share/share/service/rubrique-service.service";
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faPencil } from '@fortawesome/free-solid-svg-icons';
 import {map} from "rxjs";
 
 @Component({
@@ -10,7 +12,8 @@ import {map} from "rxjs";
 })
 export class RubriqueListComponent implements OnInit{
 
-
+  faTrashCan = faTrashCan ;
+  faPencil = faPencil;
   constructor(private rubriqueService : RubriqueServiceService) {
   }
   ngOnInit() {

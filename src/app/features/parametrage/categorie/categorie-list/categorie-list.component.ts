@@ -2,13 +2,16 @@ import { Component } from '@angular/core';
 
 import {Categorie} from "../../../../core/core/model/Categorie";
 import {CategorieService} from "../../../../share/share/service/categorie.service";
-
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faPencil } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-categorie-list',
   templateUrl: './categorie-list.component.html',
   styleUrls: ['./categorie-list.component.css']
 })
 export class CategorieListComponent {
+  faTrashCan = faTrashCan ;
+  faPencil = faPencil ;
   constructor(private categorieService : CategorieService) {
   }
   ngOnInit() {

@@ -12,6 +12,29 @@
       <label for="description" class="form-label">Description:</label>
       <textarea id="description" class="form-control" formControlName="description"></textarea>
     </div>
+    <div class="form-check mb-3">
+      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" (click)="aRubrique = true">
+      <label class="form-check-label" for="flexCheckDefault" >
+        A des rubriques
+      </label>
+    </div>
+    <div class="mb-3"  *ngIf="aRubrique == true">
+      <label for="rubriques" class="form-label">Rubriques:</label>
+      <ng-select
+        [items]="rubriques"
+        [multiple]="true"
+        id="rubriques"
+        formControlName="rubriques"
+        class="form-control"
+        [closeOnSelect]="false"
+        [searchable]="false"
+        bindLabel="libelle"
+        placeholder="Select Segment"
+        [(ngModel)]="selectedRubrique">
+      </ng-select>
+      <!--Using items input-->
+
+    </div>
     <div class="mb-3">
       <label for="status" class="form-label">Status:</label>
       <select id="status" class="form-control" formControlName="status">

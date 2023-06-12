@@ -20,8 +20,8 @@
       <td>{{categorie.libelle}}</td>
       <td>{{categorie.description}}</td>
       <td>{{categorie.status}}</td>
-      <td><button class="btn btn-primary" [routerLink]="['/parametrage/categorieedit',categorie.id]" >modify</button></td>
-      <td><button class="btn btn-primary" (click)="deleteCategorie(categorie)">supp</button></td>
+      <td><a [routerLink]="['/parametrage/categorieedit',categorie.id]" ><fa-icon [icon]="faPencil" ></fa-icon></a></td>
+      <td><a (click)="deleteCategorie(categorie)"><fa-icon [icon]="faTrashCan" ></fa-icon></a></td>
     </tr>
     </tbody>
   </table>

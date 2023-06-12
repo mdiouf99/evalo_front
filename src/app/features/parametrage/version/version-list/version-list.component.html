@@ -18,8 +18,9 @@
     <tr *ngFor="let version of versions">
       <td>{{version.libelle}}</td>
       <td>{{version.status}}</td>
-      <td><button class="btn btn-primary" [routerLink]="['/parametrage/versionedit',version.id]" >modify</button></td>
-      <td><button class="btn btn-primary" (click)="deleteVersion(version)">supp</button></td>
+      <td><a [routerLink]="['/parametrage/versionedit',version.id]"><fa-icon [icon]="faPencil" ></fa-icon></a></td>
+      <td><a  (click)="deleteVersion(version)"><fa-icon [icon]="faTrashCan" ></fa-icon></a></td>
+
     </tr>
     </tbody>
   </table>

@@ -1,12 +1,10 @@
 import {APP_INITIALIZER, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
 import {initializeKeycloak} from "../utils/app-init";
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import { EvalComponent } from './eval/eval.component';
 import { AcceuilComponent } from './acceuil/acceuil.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -16,7 +14,11 @@ import {ParametrageModule} from "./features/parametrage/parametrage.module";
 import { AccueilParametrageComponent } from './features/component/accueil-parametrage/accueil-parametrage.component';
 import { AddItemModalComponent } from './features/component/Modal/add-item-modal/add-item-modal.component';
 import { AddItemToRubriqueComponent } from './features/component/Modal/add-item-to-rubrique/add-item-to-rubrique.component';
-import { AlertComponent } from './features/component/alert/alert.component';
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {FormsModule} from "@angular/forms";
+import {NgSelectModule} from "@ng-select/ng-select";
+
+
 
 
 
@@ -26,7 +28,6 @@ import { AlertComponent } from './features/component/alert/alert.component';
 @NgModule({
   declarations: [
     AppComponent,
-    EvalComponent,
     AcceuilComponent,
     SidebarComponent,
     NavbarComponent,
@@ -43,8 +44,9 @@ import { AlertComponent } from './features/component/alert/alert.component';
     AppRoutingModule,
     KeycloakAngularModule,
     HttpClientModule,
-    ParametrageModule
-
+    FontAwesomeModule,
+    FormsModule,
+    NgSelectModule
 
   ],
   providers: [

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {VersionService} from "../../../../share/share/service/Version.service";
 import {Version} from "../../../../core/core/model/Version";
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faPencil } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-version-list',
@@ -8,6 +10,9 @@ import {Version} from "../../../../core/core/model/Version";
   styleUrls: ['./version-list.component.css']
 })
 export class VersionListComponent {
+
+  faTrashCan = faTrashCan ;
+  faPencil = faPencil;
   constructor(private versionService : VersionService) {
   }
   ngOnInit() {

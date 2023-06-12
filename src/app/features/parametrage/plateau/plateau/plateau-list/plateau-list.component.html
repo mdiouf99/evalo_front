@@ -1,1 +1,39 @@
-<p>plateau-list works!</p>
+
+<div class="container">
+  <h1>Plateaux</h1>
+  <div class="row justify-content-end">
+    <div class="col-2">
+      <button type="button" class="btn btn-primary ajout " [routerLink]="['/parametrage/plateau/plateaux/edit']" >Ajouter</button>
+    </div>
+  </div>
+  <table class="table">
+    <caption class="visually-hidden">Boosted tables basic look</caption>
+    <thead>
+    <tr>
+      <th scope="col">appelation</th>
+      <th scope="col">office</th>
+      <th scope="col">univers</th>
+      <th scope="col">segment</th>
+      <th scope="col">Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let plateau of plateaux">
+      <td>{{plateau.appelation}}</td>
+      <td>{{plateau.office}}</td>
+      <td>{{plateau.univers.libelle}}</td>
+      <td>
+          <ul class="list-unstyled m-0 d-flex gap-2 flex-wrap m-0" >
+        <li *ngFor="let segment of plateau.segments">
+          <span class="tag tag-sm">{{segment.libelle}}</span>
+        </li>
+      </ul></td>
+      <td>{{plateau.status}}</td>
+
+      <td><a [routerLink]="['/parametrage/plateau/plateaux/edit',plateau.id]"><fa-icon [icon]="faPencil" ></fa-icon></a></td>
+      <td><a (click)="deletePlateau(plateau)"><fa-icon [icon]="faTrashCan" ></fa-icon></a></td>
+
+    </tr>
+    </tbody>
+  </table>
+</div>

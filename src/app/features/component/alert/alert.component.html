@@ -1,6 +1,5 @@
 <div class="alert " [ngClass]="{'alert-success': alertType === 'success', 'alert-danger': alertType === 'error'}" role="alert" *ngIf="message">
   <span class="alert-icon"><span class="visually-hidden">Success</span></span>
   {{ message }}
-
-
+  <button type="button" class="btn-close" (click)="closeAlert()"></button>
 </div>

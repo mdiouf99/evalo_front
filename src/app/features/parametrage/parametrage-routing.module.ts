@@ -14,16 +14,16 @@ import {VersionEditComponent} from "./version/version-edit/version-edit.componen
 import {VersionListComponent} from "./version/version-list/version-list.component";
 import {CategorieListComponent} from "./categorie/categorie-list/categorie-list.component";
 import {CategorieEditComponent} from "./categorie/categorie-edit/categorie-edit.component";
-import {PlateauComponent} from "./plateau/plateau.component";
+import {PlateauComponent} from "../component/plateau/plateau.component";
 
 
 const routes: Routes = [
-  {path:'parametrage',
+  {path:'',
     component:ParametrageComponent,
     children:[
-      {path: 'plateau', component: PlateauComponent,canActivate:[AuthguardGuard]},
       {path: 'grille', component: GrilleComponent,canActivate:[AuthguardGuard]},
-      {path: '', component: AccueilParametrageComponent,canActivate:[AuthguardGuard]},
+      {path:'accueil',component:AccueilParametrageComponent,canActivate:[AuthguardGuard]},
+      {path: 'plateau', loadChildren: () => import(`./plateau/plateau.module`).then(m => m.PlateauModule) },
       { path: 'rubriqueedit', component: RubriqueEditComponent,canActivate:[AuthguardGuard]},
       { path: 'rubriqueedit/:id', component: RubriqueEditComponent,canActivate:[AuthguardGuard]},
       {path:'rubriquelist',component : RubriqueListComponent,canActivate:[AuthguardGuard]},
@@ -36,6 +36,7 @@ const routes: Routes = [
       { path: 'categorieedit', component: CategorieEditComponent,canActivate:[AuthguardGuard]},
       { path: 'categorieedit/:id', component: CategorieEditComponent,canActivate:[AuthguardGuard]},
       {path:'categorielist',component : CategorieListComponent,canActivate:[AuthguardGuard]},
+      { path: '', redirectTo: 'accueil', pathMatch: 'full' },
     ]
   }
 

@@ -1,1 +1,26 @@
-<p>univers-list works!</p>
+
+<div class="container">
+  <h1>univers</h1>
+  <div class="row justify-content-end">
+    <div class="col-2">
+      <button type="button" class="btn btn-primary ajout " [routerLink]="['/parametrage/plateau/univers/edit']" >Ajouter</button>
+    </div>
+  </div>
+  <table class="table">
+    <caption class="visually-hidden">Boosted tables basic look</caption>
+    <thead>
+    <tr>
+      <th scope="col">Libelle</th>
+      <th scope="col">Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let univers of univers">
+      <td>{{univers.libelle}}</td>
+      <td>{{univers.status}}</td>
+      <td><a [routerLink]="['/parametrage/plateau/univers/edit',univers.id]"><fa-icon [icon]="faPencil" ></fa-icon></a></td>
+      <td><a (click)="deleteUnivers(univers)"><fa-icon [icon]="faTrashCan" ></fa-icon></a></td>
+    </tr>
+    </tbody>
+  </table>
+</div>

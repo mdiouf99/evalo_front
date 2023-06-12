@@ -14,15 +14,17 @@ import { VersionEditComponent } from './version/version-edit/version-edit.compon
 import { VersionListComponent } from './version/version-list/version-list.component';
 import { CategorieEditComponent } from './categorie/categorie-edit/categorie-edit.component';
 import { CategorieListComponent } from './categorie/categorie-list/categorie-list.component';
-import {AppModule} from "../../app.module";
 import {AlertComponent} from "../component/alert/alert.component";
-import { PlateauComponent } from './plateau/plateau.component';
+import { PlateauComponent } from '../component/plateau/plateau.component';
 import { PlateauEditComponent } from './plateau/plateau/plateau-edit/plateau-edit.component';
 import { PlateauListComponent } from './plateau/plateau/plateau-list/plateau-list.component';
 import { SegmentEditComponent } from './plateau/segment/segment-edit/segment-edit.component';
 import { SegmentListComponent } from './plateau/segment/segment-list/segment-list.component';
 import { UniversEditComponent } from './plateau/univers/univers-edit/univers-edit.component';
 import { UniversListComponent } from './plateau/univers/univers-list/univers-list.component';
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {PlateauModule} from "./plateau/plateau.module";
+import {NgSelectModule} from "@ng-select/ng-select";
 
 
 
@@ -40,14 +42,6 @@ import { UniversListComponent } from './plateau/univers/univers-list/univers-lis
     CategorieEditComponent,
     CategorieListComponent,
     AlertComponent,
-    PlateauComponent,
-    PlateauEditComponent,
-    PlateauListComponent,
-    SegmentEditComponent,
-    SegmentListComponent,
-    UniversEditComponent,
-    UniversListComponent
-
 
   ],
   imports: [
@@ -57,8 +51,11 @@ import { UniversListComponent } from './plateau/univers/univers-list/univers-lis
     ReactiveFormsModule,
     RouterModule,
     ParametrageRoutingModule,
+    FontAwesomeModule,
+    NgSelectModule,
 
-
-  ]
+  ],
+  exports: [
+  ],
 })
 export class ParametrageModule { }

@@ -20,8 +20,8 @@
     <td>{{rubrique.libelle}}</td>
     <td>{{rubrique.description}}</td>
     <td>{{rubrique.status}}</td>
-    <td><button class="btn btn-primary" [routerLink]="['/parametrage/rubriqueedit',rubrique.id]" >modify</button></td>
-    <td><button class="btn btn-primary" (click)="deleteRubrique(rubrique)">supp</button></td>
+    <td><a [routerLink]="['/parametrage/rubriqueedit',rubrique.id]"><fa-icon [icon]="faPencil" ></fa-icon></a></td>
+    <td><a  (click)="deleteRubrique(rubrique)"><fa-icon [icon]="faTrashCan" ></fa-icon></a></td>
   </tr>
   </tbody>
 </table>

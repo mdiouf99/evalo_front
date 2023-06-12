@@ -4,7 +4,8 @@ import {RubriqueModel} from "../../../../core/core/model/RubriqueModel";
 import {Item} from "../../../../core/core/model/Item";
 import {ItemService} from "../../../../share/share/service/item.service";
 import {AlertService} from "../../../../share/share/service/alert.service";
-
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faPencil } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-item-list',
   templateUrl: './item-list.component.html',
@@ -12,6 +13,8 @@ import {AlertService} from "../../../../share/share/service/alert.service";
 })
 export class ItemListComponent {
 
+  faTrashCan = faTrashCan ;
+  faPencil = faPencil ;
   constructor(private itemService : ItemService,private alertService: AlertService) {
   }
   ngOnInit() {

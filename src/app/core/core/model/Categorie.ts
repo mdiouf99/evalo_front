@@ -6,7 +6,7 @@ export class Categorie{
   libelle !:string;
   description !:string;
   status !:string;
+  items !:Item[] ;
   rubriques !: RubriqueModel[];
-  items !:Item[];
 
 }

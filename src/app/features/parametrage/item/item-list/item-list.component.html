@@ -20,8 +20,8 @@
       <td>{{item.libelle}}</td>
       <td>{{item.description}}</td>
       <td>{{item.status}}</td>
-      <td><button class="btn btn-primary" [routerLink]="['/parametrage/itemedit',item.id]" >modify</button></td>
-      <td><button class="btn btn-primary" (click)="deleteItem(item)">supp</button></td>
+      <td><a [routerLink]="['/parametrage/itemedit',item.id]" ><fa-icon [icon]="faPencil" ></fa-icon></a></td>
+      <td><a (click)="deleteItem(item)"><fa-icon [icon]="faTrashCan" ></fa-icon></a></td>
     </tr>
     </tbody>
   </table>

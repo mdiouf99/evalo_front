@@ -12,6 +12,9 @@ import {Version} from "../../../core/core/model/Version";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {AddItemModalComponent} from "../../component/Modal/add-item-modal/add-item-modal.component";
 import {AddItemToRubriqueComponent} from "../../component/Modal/add-item-to-rubrique/add-item-to-rubrique.component";
+import {AlertService} from "../../../share/share/service/alert.service";
+import { faSquarePlus } from '@fortawesome/free-solid-svg-icons';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -24,10 +27,20 @@ import {AddItemToRubriqueComponent} from "../../component/Modal/add-item-to-rubr
 
 
 export class GrilleComponent implements OnInit{
+  faSquarePlus = faSquarePlus ;
+  faXmark = faXmark ;
 
   rubrique !: RubriqueModel ;
   categorie !: Categorie ;
   categories !: Categorie[] ;
+
+  selectedCategorie : Categorie[]=[] ;
+  selectedItem:Item[]=[];
+
+  selectedItem2:Item[]=[];
+  selectedItemCat:Item[]=[];
+
+  selectedItemCat2:Item[]=[];
   items !: Item[];
   item !: Item ;
   activeTab!: String ;
@@ -44,7 +57,7 @@ export class GrilleComponent implements OnInit{
   }
   rubriques !: RubriqueModel[] ;
 
-  constructor(private modalService: NgbModal, private categorieService : CategorieService,private rubriqueService : RubriqueServiceService,private itemService : ItemService,private  grilleService: GrilleService,private versionService : VersionService) {
+  constructor(private modalService: NgbModal, private categorieService : CategorieService,private rubriqueService : RubriqueServiceService,private itemService : ItemService,private  grilleService: GrilleService,private versionService : VersionService,private alertService : AlertService) {
   }
   ngOnInit() {
     this.getCategorie();
@@ -86,9 +99,31 @@ getOneCategorie(categorie:Categorie){
 
     })
   }
-addCatToGrille(categorie:Categorie){
 
-    this.grille.categorie?.push(categorie);
+  selectCategorie(event:any,categorie:Categorie){
+
+    if(event.target.checked){
+      if(this.selectedCategorie.length == 0){
+        this.selectedCategorie = [categorie];
+      }
+      else{
+        console.log('checkbox is checked=======>',this.selectedCategorie);
+        this.selectedCategorie.push(categorie) ;
+        console.log('checkbox is checked=======>',this.selectedCategorie);
+      }
+    }
+    else{
+      let i = this.selectedCategorie.indexOf(categorie);
+      this.selectedCategorie.splice(i,1),
+      console.log('checkbox is unchecked===>',this.selectedCategorie);
+    }
+
+  }
+
+
+addCatToGrille(){
+
+    this.grille.categorie = this.selectedCategorie;
     console.log(this.grille);
 
 }
@@ -96,29 +131,37 @@ addVersionToGrille(){
     this.grille.version = this.version ;
     console.log("grille=======>",this.grille)
 }
-  addItemToCat(item : Item,i:number ){
+  addItemToCat(i:number ){
+
     // @ts-ignore
-    this.grille.categorie[i].items.push(item);
+    this.grille.categorie[i].items = this.selectedItem;
     console.log('item ajoute =====>',this.grille);
-    console.log('item==>',item);
+    console.log('item==>',this.selectedItem);
     console.log('categorie index==>',i);
 
   }
 
-  addItemToRubrique(item : Item,c:number,i:number){
+  addItemToRubrique(c:number,i:number){
 
     // @ts-ignore
     console.log('item ajoute =====>',this.grille.categorie[0].rubriques[0]);
     // @ts-ignore
-    this.grille.categorie[c].rubriques[i].items.push(item);
-    console.log('item==>',item);
+    this.grille.categorie[c].rubriques[i].items = this.selectedItemCat;
     console.log('categorie index==>',i);
   }
 
   saveGrille(){
+    if(this.grille.version?.libelle=='version'){
 
+      this.alertService.showError('Veuillez ajouter une version')
+    }
+    else if (this.grille.categorie?.length == 0){
+
+      this.alertService.showError('Veuiller selectionner une categorie')
+
+    }
     this.grilleService.createGrille(this.grille).subscribe(ver=>{
-
+      this.alertService.showSuccess('Grille créée avec succès')
     });
   }
   setActiveTab(id: string): void {
@@ -138,21 +181,45 @@ addVersionToGrille(){
   }
   //Open modal to add item to categorique
   open(i:number) {
-    const modalRef = this.modalService.open(AddItemModalComponent);
+    const modalRef = this.modalService.open(AddItemModalComponent,{size:'lg'});
     modalRef.componentInstance.items = this.items;
     modalRef.componentInstance.i = i;
+    modalRef.componentInstance.selectedItem = this.selectedItem2 ;
     modalRef.componentInstance.addItemToCat = this.addItemToCat.bind(this);
+    modalRef.componentInstance.dataEmitted.subscribe((data: Item[]) => {
+      this.selectedItem = data ;
+      this.selectedItem2 = data ;
+      console.log('data=====>',data)
+      console.log('selected item pass to grille ==============>',this.selectedItem)
+      // Handle the received data as needed
+    });
   }
+
   //Open modal to add item to rubrique
   openrubrique(c:number,i:number) {
-    const modalRef = this.modalService.open(AddItemToRubriqueComponent);
+    const modalRef = this.modalService.open( AddItemToRubriqueComponent,{ size: 'lg' });
     modalRef.componentInstance.items = this.items;
     modalRef.componentInstance.i = i;
     modalRef.componentInstance.r = c;
+    modalRef.componentInstance.selectedItem = this.selectedItemCat2 ;
     console.log('id cat======>',c)
     console.log('id rub=====>',i)
     modalRef.componentInstance.addItemToRubrique = this.addItemToRubrique.bind(this);
+    modalRef.componentInstance.dataEmitted.subscribe((data: Item[]) => {
+      this.selectedItemCat = data ;
+      this.selectedItemCat2 = data ;
+      console.log('data=====>',data)
+      console.log('selected item pass to grille ==============>',this.selectedItem)
+      // Handle the received data as needed
+    });
+
+}
+doSomething(event:any){
+  if(event.target.checked){
+    console.log('checkbox is checked');
   }
-
-
+  else{
+    console.log('checkbox is unchecked');
+  }
+}
 }
