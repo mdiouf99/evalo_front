@@ -34,6 +34,8 @@ export class ItemService {
     return this.http.put<Item>(this.baseURL+'/item/update/'+id,item,{headers:headers})
   }
 
-
+  getActifItem(): Observable<Item[]>{
+    return this.http.get<Item[]>(this.baseURL+'/item/actif/all',{headers:headers})
+  }
 
 }

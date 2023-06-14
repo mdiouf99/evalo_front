@@ -77,9 +77,9 @@ export class PlateauEditComponent implements OnInit{
     this.plateauService.createPlateau(this.plateau).subscribe(
       plateau => {
         console.log(plateau);
-        this.showSuccessAlert()
+        this.alertService.showSuccess('plateau créée avec succès')
         setTimeout(() => {
-          this.router.navigate(['parametrage/plateaulist'])
+          this.router.navigate(['parametrage/plateau/plateaux/list'])
         }, 3000);
       }
     );
@@ -88,7 +88,10 @@ export class PlateauEditComponent implements OnInit{
   updatePlateau() {
     this.plateauService.updatePlateau(this.plateau, this.id).subscribe(plateau => {
       console.log(plateau);
-      this.router.navigate(['rubriquelist'])
+      this.alertService.showSuccess('plateau créée avec succès')
+      setTimeout(() => {
+        this.router.navigate(['parametrage/plateau/plateaux/list'])
+      }, 3000);
     })
 
 

@@ -3,6 +3,7 @@ import {Version} from "../../../../core/core/model/Version";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {VersionService} from "../../../../share/share/service/Version.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {AlertService} from "../../../../share/share/service/alert.service";
 
 @Component({
   selector: 'app-version-edit',
@@ -15,7 +16,7 @@ export class VersionEditComponent {
   id: number;
   isAddMode !: boolean;
 
-  constructor(private formBuilder: FormBuilder, private versionService: VersionService, private router: Router, private route: ActivatedRoute) {
+  constructor(private formBuilder: FormBuilder, private versionService: VersionService, private router: Router,private alertService : AlertService,private route: ActivatedRoute) {
     this.id = this.route.snapshot.params['id'];
     this.isAddMode = !this.id;
     console.log(this.isAddMode);
@@ -55,6 +56,7 @@ export class VersionEditComponent {
     this.versionService.createVersion(this.version).subscribe(
       version => {
         console.log(version);
+        this.alertService.showSuccess('version créée avec succès')
         this.router.navigate(['parametrage/versionlist'])
       }
     );
@@ -63,7 +65,8 @@ export class VersionEditComponent {
   updateVersion() {
     this.versionService.updateVersion(this.version, this.id).subscribe(Version => {
       console.log(Version);
-      this.router.navigate(['versionlist'])
+      this.alertService.showSuccess('version créée avec succès')
+      this.router.navigate(['parametrage/versionlist'])
     })
 
 

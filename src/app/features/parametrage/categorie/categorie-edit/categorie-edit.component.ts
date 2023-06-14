@@ -8,6 +8,7 @@ import {CategorieService} from "../../../../share/share/service/categorie.servic
 import {RubriqueServiceService} from "../../../../share/share/service/rubrique-service.service";
 import {RubriqueModel} from "../../../../core/core/model/RubriqueModel";
 import {Item} from "../../../../core/core/model/Item";
+import {AlertService} from "../../../../share/share/service/alert.service";
 
 @Component({
   selector: 'app-categorie-edit',
@@ -23,7 +24,7 @@ rubriques !: RubriqueModel[];
 aRubrique : boolean = false ;
 
   selectedRubrique !: RubriqueModel[];
-  constructor(private formBuilder: FormBuilder,private categorieService: CategorieService, private router : Router,private route: ActivatedRoute,private rubriqueService: RubriqueServiceService) {
+  constructor(private formBuilder: FormBuilder,private categorieService: CategorieService, private router : Router,private route: ActivatedRoute,private rubriqueService: RubriqueServiceService,private alertService:AlertService) {
     this.id = this.route.snapshot.params['id'];
     this.isAddMode = !this.id;
     console.log(this.isAddMode);
@@ -32,7 +33,7 @@ aRubrique : boolean = false ;
       id: [{value:'',disabled: true}],
       libelle: ['', Validators.required],
       description: ['', Validators.required],
-      rubriques: [''],
+      rubriques: []=[[]],
       items:[]=[[]],
       status: ['', Validators.required]
     })
@@ -65,16 +66,21 @@ aRubrique : boolean = false ;
     console.log(this.categorie)
     this.categorieService.createCategorie(this.categorie).subscribe(
       cat=>{
-        console.log(cat);
-        this.router.navigate(['parametrage/categorielist'])
+        this.alertService.showSuccess('Item créée avec succès')
+        setTimeout(() => {
+          this.router.navigate(['parametrage/categorielist'])
+        }, 3000);
       }
     );
   }
 
   updateCategorie(){
     this.categorieService.updateCategorie(this.categorie,this.id).subscribe(cat=>{
-      console.log(cat);
-      this.router.navigate(['parametrage/categorielist'])
+      this.alertService.showSuccess('Item créée avec succès')
+      setTimeout(() => {
+        this.router.navigate(['parametrage/categorielist'])
+      }, 3000);
+
     })
 
   }

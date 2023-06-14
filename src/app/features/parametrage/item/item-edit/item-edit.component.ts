@@ -60,7 +60,7 @@ export class ItemEditComponent {
     this.itemService.createItem(this.item).subscribe(
       item => {
         console.log(item);
-        this.showSuccessAlert()
+        this.alertService.showSuccess('Item créée avec succès')
         setTimeout(() => {
           this.router.navigate(['parametrage/itemlist'])
         }, 3000);
@@ -70,8 +70,10 @@ export class ItemEditComponent {
 
   updateItem() {
     this.itemService.updateItem(this.item, this.id).subscribe(item => {
-      console.log(item);
-      this.router.navigate(['rubriquelist'])
+      this.alertService.showSuccess('Item créée avec succès')
+      setTimeout(() => {
+        this.router.navigate(['parametrage/itemlist'])
+      }, 3000);
     })
 
 

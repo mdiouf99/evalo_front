@@ -27,16 +27,22 @@
       </select>
     </div>
     <div class="col">
+      <select class="form-select" aria-label="Default select example" >
+        <option selected>Plateau</option>
+        <option  value="{{plateau}}" *ngFor="let plateau of plateau" >{{plateau.appelation}}</option>
+      </select>
+    </div>
+    <div class="col">
       <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Add categorie</button>
     </div>
   </div>
   <div class="accordion-item"*ngFor="let cat of grille.categorie,let i = index">
     <h2 class="accordion-header" id="headingOne">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#'+cat.libelle" aria-expanded="true" aria-controls="collapseOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#c'+i" aria-expanded="true" aria-controls="collapseOne">
         {{cat.libelle}}
       </button>
     </h2>
-    <div id="{{cat.libelle}}" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+    <div id="{{'c'+i}}" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
       <div class="accordion-body" *ngIf="cat.rubriques !==[] " >
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item" role="presentation" *ngFor="let rub of cat.rubriques; let r = index">
@@ -61,6 +67,7 @@
                 </li>
               </ul>
               <button class="btn btn-primary" (click)="openrubrique(i,r)" ><fa-icon [icon]="faSquarePlus" ></fa-icon>  ITEM</button>
+              <input type="text" i class="form-control" placeholder="seuil copc">
             </div>
         </div>
   </div>
@@ -78,6 +85,7 @@
           </li>
         </ul>
         <button class="btn btn-primary" (click)="open(i)" ><fa-icon [icon]="faSquarePlus" ></fa-icon> ITEM</button>
+        <input type="text" i class="form-control" placeholder="seuil copc">
         </div>
 </div>
   </div>
@@ -124,10 +132,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
-

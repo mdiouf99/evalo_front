@@ -15,6 +15,8 @@ import {AddItemToRubriqueComponent} from "../../component/Modal/add-item-to-rubr
 import {AlertService} from "../../../share/share/service/alert.service";
 import { faSquarePlus } from '@fortawesome/free-solid-svg-icons';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import {Plateau} from "../../../core/core/model/Plateau";
+import {PlateauService} from "../../../share/share/service/plateau.service";
 
 
 
@@ -33,6 +35,8 @@ export class GrilleComponent implements OnInit{
   rubrique !: RubriqueModel ;
   categorie !: Categorie ;
   categories !: Categorie[] ;
+
+  plateau !:Plateau[] ;
 
   selectedCategorie : Categorie[]=[] ;
   selectedItem:Item[]=[];
@@ -57,17 +61,18 @@ export class GrilleComponent implements OnInit{
   }
   rubriques !: RubriqueModel[] ;
 
-  constructor(private modalService: NgbModal, private categorieService : CategorieService,private rubriqueService : RubriqueServiceService,private itemService : ItemService,private  grilleService: GrilleService,private versionService : VersionService,private alertService : AlertService) {
+  constructor(private modalService: NgbModal, private categorieService : CategorieService,private rubriqueService : RubriqueServiceService,private itemService : ItemService,private  grilleService: GrilleService,private versionService : VersionService,private plateauService : PlateauService,private alertService : AlertService) {
   }
   ngOnInit() {
     this.getCategorie();
     this.getItems();
     this.getVersion();
+    this.getPlateau();
 
   }
   getCategorie(){
     console.log("rubrique")
-    this.categorieService.getCategorie().subscribe((Categorie:any)=>{
+    this.categorieService.getActiveCategorie().subscribe((Categorie:any)=>{
         console.log("map");
         this.categories = Categorie ;
         console.log(Categorie);
@@ -78,9 +83,18 @@ export class GrilleComponent implements OnInit{
 }
   getItems(){
     console.log("rubrique")
-    this.itemService.getItem().subscribe((item:any)=>{
+    this.itemService.getActifItem().subscribe((item:any)=>{
         console.log("map");
         this.items = item ;
+        console.log("item========>",this.items);
+      }
+    )
+  }
+  getPlateau(){
+    console.log("rubrique")
+    this.plateauService.getPlateau().subscribe((plateau:any)=>{
+        console.log("map");
+        this.plateau = plateau ;
         console.log("item========>",this.items);
       }
     )
@@ -214,12 +228,5 @@ addVersionToGrille(){
     });
 
 }
-doSomething(event:any){
-  if(event.target.checked){
-    console.log('checkbox is checked');
-  }
-  else{
-    console.log('checkbox is unchecked');
-  }
-}
+
 }

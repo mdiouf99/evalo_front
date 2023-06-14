@@ -32,6 +32,10 @@ export class CategorieService {
   updateCategorie(categorie:Categorie,id:number):Observable<Categorie>{
     return this.http.put<Categorie>(this.baseURL+'/categorie/update/'+id,categorie,{headers:headers})
   }
+  getActiveCategorie(): Observable<Categorie[]>{
+
+    return this.http.get<Categorie[]>(this.baseURL+'/categorie/actif/all',{headers:headers})
+  }
 
 
 }

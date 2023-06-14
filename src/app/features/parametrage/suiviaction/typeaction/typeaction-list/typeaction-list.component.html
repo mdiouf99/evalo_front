@@ -1,0 +1,28 @@
+
+<div class="container">
+  <h1>Type Action</h1>
+  <div class="row justify-content-end">
+    <div class="col-2">
+      <button type="button" class="btn btn-primary ajout " [routerLink]="['/parametrage/suiviaction/typeaction/edit']" >Ajouter</button>
+    </div>
+  </div>
+  <table class="table">
+    <caption class="visually-hidden">Boosted tables basic look</caption>
+    <thead>
+    <tr>
+      <th scope="col">Libelle</th>
+      <th scope="col">description</th>
+      <th scope="col">Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let typeAction of typeActions">
+      <td>{{typeAction.libelle}}</td>
+      <td>{{typeAction.description}}</td>
+      <td>{{typeAction.status}}</td>
+      <td><a [routerLink]="['/parametrage/suiviaction/typeaction/edit',typeAction.id]" ><fa-icon [icon]="faPencil" ></fa-icon></a></td>
+      <td><a (click)="deleteTypeAction(typeAction)"><fa-icon [icon]="faTrashCan" ></fa-icon></a></td>
+    </tr>
+    </tbody>
+  </table>
+</div>

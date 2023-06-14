@@ -57,9 +57,9 @@ export class UniversEditComponent {
     this.universService.createUnivers(this.univers).subscribe(
       univers => {
         console.log(univers);
-        this.showSuccessAlert()
+        this.alertService.showSuccess('univers créée avec succès')
         setTimeout(() => {
-          this.router.navigate(['parametrage/universlist'])
+          this.router.navigate(['parametrage/plateau/univers/list'])
         }, 3000);
       }
     );
@@ -67,8 +67,10 @@ export class UniversEditComponent {
 
   updateUnivers() {
     this.universService.updateUnivers(this.univers, this.id).subscribe(univers => {
-      console.log(univers);
-      this.router.navigate(['universlist'])
+      this.alertService.showSuccess('univers créée avec succès')
+      setTimeout(() => {
+        this.router.navigate(['parametrage/plateau/univers/list'])
+      }, 3000);
     })
 
 

@@ -4,6 +4,7 @@ import {Categorie} from "../../../../core/core/model/Categorie";
 import {CategorieService} from "../../../../share/share/service/categorie.service";
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { faPencil } from '@fortawesome/free-solid-svg-icons';
+import {Route, Router} from "@angular/router";
 @Component({
   selector: 'app-categorie-list',
   templateUrl: './categorie-list.component.html',
@@ -12,7 +13,7 @@ import { faPencil } from '@fortawesome/free-solid-svg-icons';
 export class CategorieListComponent {
   faTrashCan = faTrashCan ;
   faPencil = faPencil ;
-  constructor(private categorieService : CategorieService) {
+  constructor(private categorieService : CategorieService,private router : Router) {
   }
   ngOnInit() {
     this.getCategorie();
@@ -35,6 +36,7 @@ export class CategorieListComponent {
     if(conf){
       this.categorieService.deleteCategorie(Categorie.id).subscribe(()=>{
         this.getCategorie();
+        this.router.navigate(['parametrage/categorielist'])
       })
     }
   }

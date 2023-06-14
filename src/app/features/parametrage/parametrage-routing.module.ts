@@ -24,6 +24,7 @@ const routes: Routes = [
       {path: 'grille', component: GrilleComponent,canActivate:[AuthguardGuard]},
       {path:'accueil',component:AccueilParametrageComponent,canActivate:[AuthguardGuard]},
       {path: 'plateau', loadChildren: () => import(`./plateau/plateau.module`).then(m => m.PlateauModule) },
+      {path: 'suiviaction', loadChildren: () => import(`./suiviaction/suiviaction.module`).then(m => m.SuiviactionModule) },
       { path: 'rubriqueedit', component: RubriqueEditComponent,canActivate:[AuthguardGuard]},
       { path: 'rubriqueedit/:id', component: RubriqueEditComponent,canActivate:[AuthguardGuard]},
       {path:'rubriquelist',component : RubriqueListComponent,canActivate:[AuthguardGuard]},
