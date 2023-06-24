@@ -1,0 +1,41 @@
+<div class="container align-items-center">
+  <form [formGroup]="form" (ngSubmit)="submitForm()">
+    <div class="mb-3">
+      <label for="id" class="form-label" >ID:</label>
+      <input type="text" class="form-control"  [disabled]="this.isAddMode" id="id" formControlName="id">
+    </div>
+    <div class="mb-3">
+      <label for="appelation" class="form-label">Appellation:</label>
+      <input type="text" id="appelation" class="form-control" formControlName="appelation">
+    </div>
+    <div class="mb-3">
+      <label for="office" class="form-label">Office:</label>
+      <select id="office" class="form-control" formControlName="office">
+        <option value="FO">FO</option>
+        <option value="BO">BO</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="univers" class="form-label">Univers:</label>
+      <select class="form-control" id="univers" aria-label="Default select example" [(ngModel)]="selectedUnivers" formControlName="univers">
+        <option [ngValue]="univers" *ngFor="let univers of univers">{{univers.libelle}}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="segment" class="form-label">Univers:</label>
+      <select class="form-control" id="segment" aria-label="Default select example" [(ngModel)]="selectedSegment" formControlName="univers">
+        <option [ngValue]="segment" *ngFor="let segment of segments">{{segment.libelle}}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="status" class="form-label">Status:</label>
+      <select id="status" class="form-control" formControlName="status">
+        <option value="ACTIF">ACTIF</option>
+        <option value="INACTIF">INACTIF</option>
+      </select>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary mt-2" [disabled]="form.invalid">Submit</button>
+    </div>
+  </form>
+</div>

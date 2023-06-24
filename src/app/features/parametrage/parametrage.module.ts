@@ -25,6 +25,8 @@ import { UniversListComponent } from './plateau/univers/univers-list/univers-lis
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {PlateauModule} from "./plateau/plateau.module";
 import {NgSelectModule} from "@ng-select/ng-select";
+import { UtilisateursComponent } from '../component/utilisateurs/utilisateurs.component';
+import { UtilisateurEditComponent } from './utilisateurs/utilisateur-edit/utilisateur-edit.component';
 
 
 
@@ -41,8 +43,7 @@ import {NgSelectModule} from "@ng-select/ng-select";
     VersionListComponent,
     CategorieEditComponent,
     CategorieListComponent,
-    AlertComponent,
-
+    AlertComponent
   ],
   imports: [
     CommonModule,

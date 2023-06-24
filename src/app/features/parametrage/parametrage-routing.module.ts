@@ -15,6 +15,7 @@ import {VersionListComponent} from "./version/version-list/version-list.componen
 import {CategorieListComponent} from "./categorie/categorie-list/categorie-list.component";
 import {CategorieEditComponent} from "./categorie/categorie-edit/categorie-edit.component";
 import {PlateauComponent} from "../component/plateau/plateau.component";
+import {UtilisateursComponent} from "../component/utilisateurs/utilisateurs.component";
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
     component:ParametrageComponent,
     children:[
       {path: 'grille', component: GrilleComponent,canActivate:[AuthguardGuard]},
+      {path:'utilisateurs',loadChildren: () => import(`./utilisateurs/utilisateurs.module`).then(m => m.UtilisateursModule)},
       {path:'accueil',component:AccueilParametrageComponent,canActivate:[AuthguardGuard]},
       {path: 'plateau', loadChildren: () => import(`./plateau/plateau.module`).then(m => m.PlateauModule) },
       {path: 'suiviaction', loadChildren: () => import(`./suiviaction/suiviaction.module`).then(m => m.SuiviactionModule) },
