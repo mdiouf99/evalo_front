@@ -5,7 +5,7 @@ import { UtilisateursRoutingModule } from './utilisateurs-routing.module';
 import {UtilisateurEditComponent} from "./utilisateur-edit/utilisateur-edit.component";
 import {UtilisateursComponent} from "../../component/utilisateurs/utilisateurs.component";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgSelectModule} from "@ng-select/ng-select";
 
 
@@ -14,12 +14,13 @@ import {NgSelectModule} from "@ng-select/ng-select";
     UtilisateurEditComponent,
     UtilisateursComponent,
   ],
-  imports: [
-    CommonModule,
-    UtilisateursRoutingModule,
-    FontAwesomeModule,
-    ReactiveFormsModule,
-    NgSelectModule
-  ]
+    imports: [
+        CommonModule,
+        UtilisateursRoutingModule,
+        FontAwesomeModule,
+        ReactiveFormsModule,
+        NgSelectModule,
+        FormsModule
+    ]
 })
 export class UtilisateursModule { }

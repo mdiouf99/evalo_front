@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {VersionService} from "../../../../share/share/service/Version.service";
+import {VersionService} from "../../../../share/share/service/version.service";
 import {Version} from "../../../../core/core/model/Version";
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { faPencil } from '@fortawesome/free-solid-svg-icons';

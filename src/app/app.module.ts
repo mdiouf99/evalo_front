@@ -19,6 +19,7 @@ import {FormsModule} from "@angular/forms";
 import {NgSelectModule} from "@ng-select/ng-select";
 import { SuiviactionComponent } from './features/component/suiviaction/suiviaction.component';
 import { HasAnyAuthorityDirective } from './has-any-authority.directive';
+import { EvaluationComponent } from './features/Evaluation/evaluation.component';
 
 
 
@@ -38,6 +39,7 @@ import { HasAnyAuthorityDirective } from './has-any-authority.directive';
     AddItemModalComponent,
     AddItemToRubriqueComponent,
     HasAnyAuthorityDirective,
+    EvaluationComponent,
 
 
 

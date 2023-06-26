@@ -26,18 +26,18 @@ export class UtilisateurEditComponent implements OnInit{
   selectedSegment !: Segment ;
 
   univers !: Univers [];
+  groups:string[]=["Administrateur"]
   ngOnInit(): void {
   }
   constructor(private formBuilder: FormBuilder, private userService: UserService,private segmentService : SegmentService,private universService : UniversService , private router: Router, private route: ActivatedRoute,private alertService: AlertService) {
     this.id = this.route.snapshot.params['id'];
     this.isAddMode = !this.id;
     this.form = this.formBuilder.group({
-      username: [{value: '', disabled: true}],
+      username: ['', Validators.required],
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
       email: ['', Validators.required],
-      groups: [''],
-      enable: ['', Validators.required]
+      groups:[]=[[]],
     })
     if (!this.isAddMode) {
       this.userService.getUserById(this.id)
@@ -65,13 +65,12 @@ export class UtilisateurEditComponent implements OnInit{
   }
 
   createUser() {
+    console.log('user======>',this.user)
     this.userService.createUser(this.user).subscribe(
       plateau => {
         console.log(plateau);
-        this.alertService.showSuccess('plateau créée avec succès')
-        setTimeout(() => {
-          this.router.navigate(['parametrage/plateau/plateaux/list'])
-        }, 3000);
+        this.alertService.showSuccess('Utilisateur créée avec succès')
+
       }
     );
   }
@@ -79,9 +78,9 @@ export class UtilisateurEditComponent implements OnInit{
   updateUser() {
     this.userService.updateUser(this.user, this.id).subscribe(plateau => {
       console.log(plateau);
-      this.alertService.showSuccess('plateau créée avec succès')
+      this.alertService.showSuccess('utilisateurs modifiée avec succès')
       setTimeout(() => {
-        this.router.navigate(['parametrage/plateau/plateaux/list'])
+        this.router.navigate(['parametrage/utilisateurs'])
       }, 3000);
     })
 

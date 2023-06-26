@@ -7,7 +7,7 @@ import {Item} from "../../../core/core/model/Item";
 import {RubriqueServiceService} from "../../../share/share/service/rubrique-service.service";
 import {ItemService} from "../../../share/share/service/item.service";
 import {GrilleService} from "../../../share/share/service/grille.service";
-import {VersionService} from "../../../share/share/service/Version.service";
+import {VersionService} from "../../../share/share/service/version.service";
 import {Version} from "../../../core/core/model/Version";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {AddItemModalComponent} from "../../component/Modal/add-item-modal/add-item-modal.component";

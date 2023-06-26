@@ -33,4 +33,7 @@ export class UserService {
   updateUser(user:User,id:number):Observable<Plateau>{
     return this.http.put<Plateau>(this.baseURL+'/user/update/'+id,user,{headers:headers})
   }
+  searchUser(query:string):Observable<User[]>{
+      return this.http.get<User[]>(this.baseURL+'/user/search', { params: { query } });
+  }
 }

@@ -1,0 +1,117 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="card">
+    <div class="row">
+      <div class="col">
+        <label  class="form-label">Plateau</label>
+        <select class="form-control">
+        <option selected>Plateau</option>
+          <option  value="{{plateau}}" *ngFor="let plateau of plateau" >{{plateau.appelation}}</option>
+        </select>
+      </div>
+    <div class="col">
+      <label class="form-label">version</label>
+      <select  class="form-control" >
+        <option selected>Version</option>
+        <option  value="{{version}}" >{{version.libelle}}</option>
+      </select>
+    </div>
+    <div class="col">
+      <label for="exampleFormControlInput1" class="form-label">Type d'écoute</label>
+      <input type="email" class="form-control" id="exampleFormControlInput2" >
+    </div>
+    <div class="col">
+      <label for="exampleFormControlInput1" class="form-label">Programme</label>
+      <input type="email" class="form-control" id="exampleFormControlInput3" >
+    </div>
+
+      </div>
+  </div>
+
+  <div class="row" style="margin-top: 5%">
+
+    <div class="col">
+      <h3>Conseiller</h3>
+      <div class="card">
+      <label for="exampleFormControlInput1" class="form-label">Code/Matricule</label>
+      <input type="email" class="form-control"  >
+      <label for="exampleFormControlInput1" class="form-label">Prenom</label>
+      <input type="email" class="form-control"  >
+      <label for="exampleFormControlInput1" class="form-label">Nom</label>
+      <input type="email" class="form-control"  >
+      <label for="exampleFormControlInput1" class="form-label">Segment</label>
+      <input type="email" class="form-control"  >
+      </div>
+    </div>
+
+    <div class="col">
+      <h3>Appel</h3>
+      <div class="card">
+      <label for="exampleFormControlInput1" class="form-label">Date</label>
+      <input type="email" class="form-control" >
+      <label for="exampleFormControlInput1" class="form-label">Ref</label>
+      <input type="email" class="form-control"  >
+      <label for="exampleFormControlInput1" class="form-label">Produit</label>
+      <input type="email" class="form-control"  >
+      <label for="exampleFormControlInput1" class="form-label">Motif</label>
+      <input type="email" class="form-control"  >
+      </div>
+    </div>
+    <div class="col">
+      <h3>Evaluation</h3>
+    <div class="card">
+      <label for="exampleFormControlInput1" class="form-label">Evaluateur</label>
+      <input type="email" class="form-control" >
+      <label for="exampleFormControlInput1" class="form-label">Dispositif</label>
+      <input type="email" class="form-control"  >
+      <label for="exampleFormControlInput1" class="form-label">Date</label>
+      <input type="email" class="form-control"  >
+      <label for="exampleFormControlInput1" class="form-label">Ancienneté</label>
+      <input type="email" class="form-control"  >
+    </div>
+    </div>
+  </div>
+
+
+  <div class="accordion" id="accordionExample">
+    <h1>Grille</h1>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Accordion Item #1
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Accordion Item #2
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Accordion Item #3
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

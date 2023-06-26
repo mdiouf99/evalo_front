@@ -1,41 +1,43 @@
-<div class="container align-items-center">
+<div class="bg-supporting-white title-bar">
+  <div class="container-xxl" style="width: 100%">
+    <h1 class="display-3">Utilisateurs</h1>
+    <picture>
+      <source media="(min-width:1440px)" srcset="https://boosted.orange.com/docs/5.2/assets/img/title-bars-illustrations/illustration-1440.png">
+      <source media="(min-width:1280px)" srcset="https://boosted.orange.com/docs/5.2/assets/img/title-bars-illustrations/illustration-1280.png">
+      <source media="(min-width:1024px)" srcset="https://boosted.orange.com/docs/5.2/assets/img/title-bars-illustrations/illustration-1024.png">
+      <source media="(min-width:768px)" srcset="https://boosted.orange.com/docs/5.2/assets/img/title-bars-illustrations/illustration-768.png">
+      <source media="(min-width:480px)" srcset="https://boosted.orange.com/docs/5.2/assets/img/title-bars-illustrations/illustration-480.png">
+      <source media="(min-width:320px)" srcset="https://boosted.orange.com/docs/5.2/assets/img/title-bars-illustrations/illustration-320.png">
+      <img src="https://boosted.orange.com/docs/5.2/assets/img/title-bars-illustrations/illustration-320.png" alt="">
+    </picture>
+  </div>
+</div>
+<div class="container align-items-center form">
   <form [formGroup]="form" (ngSubmit)="submitForm()">
     <div class="mb-3">
-      <label for="id" class="form-label" >ID:</label>
-      <input type="text" class="form-control"  [disabled]="this.isAddMode" id="id" formControlName="id">
+      <label for="username" class="form-label" >Nom d'utilisateur:</label>
+      <input type="text" class="form-control"  [disabled]="this.isAddMode" id="username" formControlName="username">
     </div>
     <div class="mb-3">
-      <label for="appelation" class="form-label">Appellation:</label>
-      <input type="text" id="appelation" class="form-control" formControlName="appelation">
+      <label for="firstname" class="form-label">Prénom:</label>
+      <input type="text" id="firstname" class="form-control" formControlName="firstname">
     </div>
     <div class="mb-3">
-      <label for="office" class="form-label">Office:</label>
-      <select id="office" class="form-control" formControlName="office">
-        <option value="FO">FO</option>
-        <option value="BO">BO</option>
-      </select>
+      <label for="lastname" class="form-label">Nom:</label>
+      <input type="text" id="lastname" class="form-control" formControlName="lastname">
     </div>
     <div class="mb-3">
-      <label for="univers" class="form-label">Univers:</label>
-      <select class="form-control" id="univers" aria-label="Default select example" [(ngModel)]="selectedUnivers" formControlName="univers">
-        <option [ngValue]="univers" *ngFor="let univers of univers">{{univers.libelle}}</option>
-      </select>
+      <label for="email" class="form-label">email:</label>
+      <input type="text" id="email" class="form-control" formControlName="email">
     </div>
     <div class="mb-3">
-      <label for="segment" class="form-label">Univers:</label>
-      <select class="form-control" id="segment" aria-label="Default select example" [(ngModel)]="selectedSegment" formControlName="univers">
-        <option [ngValue]="segment" *ngFor="let segment of segments">{{segment.libelle}}</option>
-      </select>
-    </div>
-    <div class="mb-3">
-      <label for="status" class="form-label">Status:</label>
-      <select id="status" class="form-control" formControlName="status">
-        <option value="ACTIF">ACTIF</option>
-        <option value="INACTIF">INACTIF</option>
+      <label for="groups" class="form-label">Groupe:</label>
+      <select id="groups" class="form-control" formControlName="groups">
+        <option [value]=groups>Administrateur</option>
       </select>
     </div>
     <div>
-      <button type="submit" class="btn btn-primary mt-2" [disabled]="form.invalid">Submit</button>
+      <button type="submit" class="btn btn-primary mt-2" [disabled]="form.invalid" (click)="createUser()">Submit</button>
     </div>
   </form>
 </div>

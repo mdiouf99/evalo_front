@@ -1,11 +1,23 @@
 <div class="container">
   <div class="row height d-flex justify-content-center ">
-    <div class="col-md-8">
-      <button class="btn btn-primary add"><fa-icon [icon]="faPlus" ></fa-icon> Ajouter un utilisateur</button>
+    <div class="col">
+      <button class="btn btn-primary add" routerLink="/parametrage/utilisateurs/edit"><fa-icon [icon]="faPlus" ></fa-icon> Ajouter un utilisateur</button>
       <div class="search">
         <fa-icon class="fa-search" [icon]="faSearch" ></fa-icon>
-        <input type="text" class="form-control" placeholder="Rechercher un utilisateur">
-        <button class="btn btn-primary">Rechercher</button>
+        <input type="text" [(ngModel)]="query"  class="form-control" placeholder="Rechercher un utilisateur">
+        <button class="btn btn-primary" (click)="searchUserByName()">Rechercher</button>
+        <table class="table table-striped">
+          <tbody>
+          <tr *ngFor="let user of user">
+            <td>{{user.username}}</td>
+            <td>{{user.firstname}}</td>
+            <td>{{user.lastname}}</td>
+            <td>{{user.email}}</td>
+            <td><a [routerLink]="['/parametrage/utilisateurs/edit',user.id]"><fa-icon [icon]="faPencil" ></fa-icon></a></td>
+            <td><a ><fa-icon [icon]="faTrashCan" ></fa-icon></a></td>
+          </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

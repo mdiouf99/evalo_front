@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {Version} from "../../../../core/core/model/Version";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {VersionService} from "../../../../share/share/service/Version.service";
+import {VersionService} from "../../../../share/share/service/version.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AlertService} from "../../../../share/share/service/alert.service";
 
