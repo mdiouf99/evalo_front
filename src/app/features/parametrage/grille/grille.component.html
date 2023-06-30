@@ -27,9 +27,9 @@
       </select>
     </div>
     <div class="col">
-      <select class="form-select" aria-label="Default select example" >
+      <select class="form-select" aria-label="Default select example" [(ngModel)]="selectedPlateau" (ngModelChange)="addPlateauToGrille($event)">
         <option selected>Plateau</option>
-        <option  value="{{plateau}}" *ngFor="let plateau of plateau" >{{plateau.appelation}}</option>
+        <option   *ngFor="let plateau of plateau"  [ngValue]="plateau"> {{plateau.appelation}}</option>
       </select>
     </div>
     <div class="col">

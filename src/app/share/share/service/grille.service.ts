@@ -23,4 +23,7 @@ export class GrilleService {
   createGrille(grille:Grille):Observable<Grille>{
     return this.http.post<Grille>(this.baseURL+'/grille/create',grille,{headers:headers})
   }
+  getGrilleByVersionAndPlateau(idv:number,idp:number):Observable<Grille[]>{
+  return this.http.get<Grille[]>(this.baseURL+'/grille/plateau/'+idp+'/version/'+idv,{headers:headers});
+}
 }

@@ -4,7 +4,7 @@
       <button class="btn btn-primary add" routerLink="/parametrage/utilisateurs/edit"><fa-icon [icon]="faPlus" ></fa-icon> Ajouter un utilisateur</button>
       <div class="search">
         <fa-icon class="fa-search" [icon]="faSearch" ></fa-icon>
-        <input type="text" [(ngModel)]="query"  class="form-control" placeholder="Rechercher un utilisateur">
+        <input type="text" [(ngModel)]="query"  class="form-control" (input)="searchUserByName()" placeholder="Rechercher un utilisateur">
         <button class="btn btn-primary" (click)="searchUserByName()">Rechercher</button>
         <table class="table table-striped">
           <tbody>

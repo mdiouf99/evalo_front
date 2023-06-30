@@ -40,7 +40,7 @@ export class GrilleComponent implements OnInit{
 
   selectedCategorie : Categorie[]=[] ;
   selectedItem:Item[]=[];
-
+  selectedPlateau !: Plateau ;
   selectedItem2:Item[]=[];
   selectedItemCat:Item[]=[];
 
@@ -69,6 +69,7 @@ export class GrilleComponent implements OnInit{
     this.getVersion();
     this.getPlateau();
 
+
   }
   getCategorie(){
     console.log("rubrique")
@@ -81,6 +82,9 @@ export class GrilleComponent implements OnInit{
 
     )
 }
+  assignCorporationToManage(selectedValue:any) {
+    console.log(selectedValue)
+  }
   getItems(){
     console.log("rubrique")
     this.itemService.getActifItem().subscribe((item:any)=>{
@@ -145,6 +149,11 @@ addVersionToGrille(){
     this.grille.version = this.version ;
     console.log("grille=======>",this.grille)
 }
+  addPlateauToGrille(event:any){
+    this.grille.plateau =event ;
+    console.log("grille=======>",this.grille)
+  }
+
   addItemToCat(i:number ){
 
     // @ts-ignore

@@ -13,6 +13,7 @@ export function initializeKeycloak(keycloak: KeycloakService):() => Promise<bool
         checkLoginIframe: true,
         checkLoginIframeInterval: 25,
       },
+
       shouldAddToken: (request) => {
         const {method, url} = request;
 
