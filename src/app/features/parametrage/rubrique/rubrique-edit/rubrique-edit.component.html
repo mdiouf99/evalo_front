@@ -15,11 +15,11 @@
   <div class="form-check mb-3">
     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" (click)="aItem = true">
     <label class="form-check-label" for="flexCheckDefault" >
-      A des rubriques
+      A des Item
     </label>
   </div>
   <div class="mb-3"  *ngIf="aItem == true">
-    <label for="rubriques" class="form-label">Rubriques:</label>
+    <label for="rubriques" class="form-label">Item:</label>
     <ng-select
       [items]="items"
       [multiple]="true"
@@ -41,7 +41,7 @@
   </select>
 </div>
 <div>
-  <button type="submit" class="btn btn-primary mt-2" [disabled]="form.invalid">Submit</button>
+  <button type="submit" class="btn btn-primary mt-2" [disabled]="form.invalid">Enregistrer</button>
 </div>
 </form>
 </div>

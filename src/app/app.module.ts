@@ -20,6 +20,7 @@ import {NgSelectModule} from "@ng-select/ng-select";
 import { SuiviactionComponent } from './features/component/suiviaction/suiviaction.component';
 import { HasAnyAuthorityDirective } from './has-any-authority.directive';
 import { EvaluationComponent } from './features/Evaluation/evaluation.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -40,6 +41,7 @@ import { EvaluationComponent } from './features/Evaluation/evaluation.component'
     AddItemToRubriqueComponent,
     HasAnyAuthorityDirective,
     EvaluationComponent,
+    FooterComponent,
 
 
 

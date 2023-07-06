@@ -9,6 +9,10 @@ import Keycloak, {KeycloakInstance} from "keycloak-js";
 import {UserService} from "../../share/share/service/user.service";
 import {GrilleService} from "../../share/share/service/grille.service";
 import {Grille} from "../../core/core/model/Grille";
+import {Evaluation} from "../../core/core/model/Evaluation";
+import {Appel} from "../../core/core/model/Appel";
+import {EvalutionService} from "../../share/share/service/evalution.service";
+import {CategorieService} from "../../share/share/service/categorie.service";
 
 @Component({
   selector: 'app-evaluation',
@@ -33,7 +37,34 @@ export class EvaluationComponent implements OnInit{
 
   grille !: Grille ;
   activeTab!: String ;
-  constructor(private plateauService: PlateauService,private grilleService : GrilleService , private userService : UserService, private versionService: VersionService,private kc : KeycloakService) {
+
+  evaluation : Evaluation={
+    id: 0,
+    anciennete: "",
+    appel: undefined,
+    conseiller: undefined,
+    dispositif: "",
+    evaluateur: "",
+    grille: undefined,
+    plateau: undefined,
+    programme: "",
+    typeecoute: ""
+  };
+  dispositif!: string;
+  typeecoute!: string;
+   programme !: string;
+   anciennete !: string;
+
+  appel: Appel={
+    id: 0,
+    date:new Date(),
+    motif: "",
+    produit: "",
+    ref: ""
+
+  };
+
+  constructor(private plateauService: PlateauService,private categorieService:CategorieService,private evaluationService: EvalutionService,private grilleService : GrilleService , private userService : UserService, private versionService: VersionService,private kc : KeycloakService) {
   }
   ngOnInit(): void {
 
@@ -73,6 +104,42 @@ export class EvaluationComponent implements OnInit{
   addPlateauToGrille(event:any){
     console.time(event) ;
   }
+  faireEvaluation(){
+    /*this.evaluation.dispositif=this.dispositif;
+    this.evaluation.anciennete=this.anciennete;
+    this.evaluation.programme=this.programme;
+    this.evaluation.typeecoute=this.typeecoute;
+    this.evaluation.conseiller=this.selectedUser;*/
+
+    // @ts-ignore
+    for(let i =0;i<this.grille.categorie.length;i++){
+      // @ts-ignore
+      for(let j=0;j<this.grille.categorie[i].rubriques.length;j++){
+        // @ts-ignore
+        this.categorieService.getOneCategorieById(this.grille.categorie[i].id).subscribe(resp=>{
+          console.log(resp);
+          // @ts-ignore
+
+          this.grille.categorie[i].rubriques[j].categorie=resp;
+          }
+
+        );
+
+      }
+    }
+    console.log("Evaluation",this.grille);
+    this.evaluation.plateau=this.selectedPlateau;
+    this.evaluation.appel=this.appel;
+    this.evaluation.grille=this.grille;
+    this.evaluation.conseiller=this.selectedUser;
+
+
+    console.log("Evaluation",this.evaluation);
+    this.evaluationService.faireEvaluation(this.evaluation).subscribe(()=>{
+      console.log("Evaluation faite avec succès")
+    })
+
+  }
 
   getUserByUsername(){
 
@@ -93,8 +160,8 @@ export class EvaluationComponent implements OnInit{
     this.selectedUser = user ;
   }
   getGrilleByVersionAndPlateau(){
-    this.grilleService.getGrilleByVersionAndPlateau(15,3).subscribe(grille=>{
-      this.grille=grille[0] ;
+    this.grilleService.getGrilleByVersionAndPlateau(16,1).subscribe(grille=>{
+      this.grille=grille ;
       console.log('grille',this.grille)
     })
 }

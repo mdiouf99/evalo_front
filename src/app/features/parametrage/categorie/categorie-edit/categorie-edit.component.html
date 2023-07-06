@@ -1,4 +1,5 @@
 <div class="container align-items-center">
+  <h1>Categories</h1>
   <form [formGroup]="form" (ngSubmit)="submitForm()">
     <div class="mb-3">
       <label for="id" class="form-label" >ID:</label>
@@ -43,7 +44,7 @@
       </select>
     </div>
     <div>
-      <button type="submit" class="btn btn-primary mt-2" [disabled]="form.invalid">Submit</button>
+      <button type="submit" class="btn btn-primary mt-2" [disabled]="form.invalid">Enregistrer</button>
     </div>
   </form>
 </div>

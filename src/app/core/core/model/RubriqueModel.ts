@@ -1,4 +1,5 @@
 import {Item} from "./Item";
+import {Categorie} from "./Categorie";
 
 export class RubriqueModel{
   id !:number ;
@@ -6,4 +7,5 @@ export class RubriqueModel{
   description !:string;
   status !: string ;
   items !: Item[];
+  categorie!:Categorie;
 }

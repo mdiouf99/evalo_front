@@ -58,21 +58,15 @@
                     <div class="col">
                       <label >{{item.libelle}}</label>
                     </div>
-                    <div class="col">
-                      <select id="requiredSelect" class="form-select" required>
-                        <option value="">Required select</option>
-                      </select>
-                    </div>
                   </div>
                 </li>
               </ul>
               <button class="btn btn-primary" (click)="openrubrique(i,r)" ><fa-icon [icon]="faSquarePlus" ></fa-icon>  ITEM</button>
-              <input type="text" i class="form-control" placeholder="seuil copc">
             </div>
         </div>
   </div>
       <div class="accordion-body"  *ngIf="cat.rubriques.length ===0">
-        <ul class="list-group list-group-horizontal-xxl">
+        <ul class="list-group ">
           <li class="list-group-item" *ngFor="let items of cat.items">
             <div class="row">
               <div class="col">
@@ -85,7 +79,6 @@
           </li>
         </ul>
         <button class="btn btn-primary" (click)="open(i)" ><fa-icon [icon]="faSquarePlus" ></fa-icon> ITEM</button>
-        <input type="text" i class="form-control" placeholder="seuil copc">
         </div>
 </div>
   </div>
@@ -127,7 +120,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" (click)="addCatToGrille()">Save changes</button>
+        <button type="button" class="btn btn-primary" (click)="addCatToGrille()">Enregistrer</button>
       </div>
     </div>
   </div>

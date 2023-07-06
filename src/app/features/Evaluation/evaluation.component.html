@@ -13,16 +13,15 @@
       <label class="form-label">version</label>
       <select  class="form-control" >
         <option selected>Version</option>
-        <option  value="{{version}}" >{{version.libelle}}</option>
+        <option  value="{{version}}" >{{version?.libelle}}</option>
       </select>
     </div>
-      <div class="col">
+      <div class="col charger">
       <button class="btn btn-primary" (click)="getGrilleByVersionAndPlateau()">charger grille</button>
-
       </div>
     <div class="col">
       <label  class="form-label">Type d'écoute</label>
-      <select  class="form-control" >
+      <select  class="form-control" [(ngModel)]="this.evaluation.typeecoute">
         <option  value="ECHANTILLON" >ECHANTILLON</option>
         <option  value="HORS ECHANTILLON" >HORS ECHANTILLON</option>
         <option  value="CONTROLE" >CONTROLE</option>
@@ -31,7 +30,7 @@
     </div>
     <div class="col">
       <label  class="form-label">Programme</label>
-      <input type="email" class="form-control" id="exampleFormControlInput3" >
+      <input type="email" class="form-control" id="exampleFormControlInput3" [(ngModel)]="this.evaluation.programme">
     </div>
 
       </div>
@@ -53,44 +52,42 @@
       <input type="email" class="form-control" [ngModel]="selectedUser?.username" (ngModelChange)="selectedUser.username = $event">
       <label  class="form-label" >Nom</label>
       <input type="email" class="form-control" [ngModel]="selectedUser?.lastname" (ngModelChange)="selectedUser.username = $event">
-      <label  class="form-label" >Segment</label>
-      <input type="email" class="form-control"  >
-      </div>
+    </div>
     </div>
 
     <div class="col">
       <h3>Appel</h3>
       <div class="card">
       <label  class="form-label">Date</label>
-      <input type="date" class="form-control" >
+      <input type="date" class="form-control" [(ngModel)]="this.appel.date">
       <label  class="form-label">Ref</label>
-      <input type="email" class="form-control"  >
+      <input type="email" class="form-control" [(ngModel)]="this.appel.ref" >
       <label class="form-label">Produit</label>
-      <input type="email" class="form-control"  >
+      <input type="email" class="form-control"  [(ngModel)]="this.appel.produit">
       <label  class="form-label">Motif</label>
-      <input type="email" class="form-control"  >
+      <input type="email" class="form-control"  [(ngModel)]="this.appel.motif">
       </div>
     </div>
     <div class="col">
       <h3>Evaluation</h3>
     <div class="card">
-      <label  class="form-label" [(ngModel)]="this.username">Evaluateur</label>
-      <input type="email" class="form-control" >
-      <label  class="form-label">Dispositif</label>
-      <input type="email" class="form-control"  >
+      <label  class="form-label" >Evaluateur</label>
+      <input type="email" class="form-control" [(ngModel)]="this.username">
+      <label  class="form-label" >Dispositif</label>
+      <input type="email" class="form-control" [(ngModel)]="this.evaluation.dispositif" >
       <label class="form-label">Date</label>
-      <input type="date" class="form-control"  >
+      <input type="date" class="form-control" >
       <label  class="form-label">Ancienneté</label>
-      <select  class="form-control" >
+      <select  class="form-control"[(ngModel)]="this.evaluation.anciennete" >
         <option  value="ANCIEN" >ANCIEN</option>
         <option  value="NOUVEAU" >NOUVEAU</option>
       </select>
     </div>
     </div>
-  </div>
+
   <div class="accordion" id="accordionExample">:
     <h1>Grille</h1>
-  <div class="accordion-item"*ngFor="let cat of grille.categorie,let i = index">
+  <div class="accordion-item"*ngFor="let cat of grille?.categorie,let i = index">
     <h2 class="accordion-header" id="headingOne">
       <button class="accordion-button" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#c'+i" aria-expanded="true" aria-controls="collapseOne">
         {{cat.libelle}}
@@ -114,7 +111,9 @@
                   </div>
                   <div class="col">
                     <select id="requiredSelect2" class="form-select" required>
-                      <option value="">Required select</option>
+                      <option value=0>N/A</option>
+                      <option value=1>OUI</option>
+                      <option value=0>NON</option>
                     </select>
                   </div>
                 </div>
@@ -140,6 +139,7 @@
       </div>
     </div>
 
+  </div>
     <div class="accordion-item">
       <h2 class="accordion-header" id="headingThree">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -148,14 +148,32 @@
       </h2>
       <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
         <div class="accordion-body">
-          <div class="card">
-            <label>Nombre d'erreur critique</label>
-             <label> Nombre d'erreur non-critique</label>
+          <div class="row">
+            <div class="col">
+              <div class="card">
+                <h3>Erreur  Critique</h3>
+                <ul class="list-group">
+                  <li class="list-group-item">Consommateur final : <span>1</span></li>
+                  <li class="list-group-item">Conformité : <span>1</span></li>
+                  <li class="list-group-item">Activité : <span>0</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <h3>Erreur Non Critique</h3>
+                <ul class="list-group">
+                  <li class="list-group-item">Nombre : <span>1</span></li>
+                  <li class="list-group-item">Moyenne : <span>100%</span></li>
+
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 </div>
-
-
+  <button class="btn btn primary" (click)="faireEvaluation()">valider</button>
+</div>
+</div>

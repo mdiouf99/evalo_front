@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {KeycloakService} from "keycloak-angular";
 import {Observable} from "rxjs";
 import {Categorie} from "../../../core/core/model/Categorie";
+import {Categorie2} from "../../../core/core/model/Categorie2";
 const headers= new HttpHeaders()
   .set('content-type', 'application/json')
   .set('Access-Control-Allow-Origin', '*');
@@ -22,6 +23,9 @@ export class CategorieService {
 
   getOneCategorieById(id:number):Observable<Categorie>{
     return this.http.get<Categorie>(this.baseURL+'/categorie/'+id,{headers:headers})
+  }
+  getOneCategorieById2(id:number):Observable<Categorie2>{
+    return this.http.get<Categorie2>(this.baseURL+'/categorie/'+id,{headers:headers})
   }
   createCategorie(categorie:Categorie):Observable<Categorie>{
     return this.http.post<Categorie>(this.baseURL+'/categorie/create',categorie,{headers:headers})
